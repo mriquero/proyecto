@@ -10,5 +10,13 @@ package ec.edu.espol.util;
  * @author macbookpro
  */
 public class Vehiculo {
-    
+    protected String placa;
+    protected String marca;
+    protected String modelo;
+    protected String tipoDeMotor;
+    protected int anio;
+    protected double recorrido;
+    protected String color;
+    protected String TipoCombustible;
+    protected double precio;
 }

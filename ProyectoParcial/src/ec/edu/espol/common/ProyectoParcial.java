@@ -5,6 +5,8 @@
  */
 package ec.edu.espol.common;
 
+import java.util.Scanner;
+
 /**
  *
  * @author macbookpro
@@ -15,6 +17,7 @@ public class ProyectoParcial {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
         System.out.println("***************BIENVENIDO****************");
         System.out.println("Coloca un número de acuerdo a la opcion que mas se ajuste: ");
         System.out.println("1. Vendedor");
