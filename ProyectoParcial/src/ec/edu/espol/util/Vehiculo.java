@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author macbookpro
  */
-public class Vehiculo {
+public abstract class Vehiculo {
     //ATRIBUTOS
     protected String placa;
     protected String marca;
