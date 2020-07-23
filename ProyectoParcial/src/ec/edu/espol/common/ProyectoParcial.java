@@ -55,9 +55,7 @@ public class ProyectoParcial {
                         }
                         System.out.println("Organización: ");
                         String org= sc.nextLine();
-
-                }
-                break;
+                    break;
             case 2: System.out.print("Ingrese su usuario: ");
                     String us=sc.nextLine();
                     System.out.println("Ingrese su contrseña: ");
@@ -68,6 +66,37 @@ public class ProyectoParcial {
                     System.out.println("Ingrese su contrseña: ");
             case 4: 
                 break;
+                }
+            case 2: 
+                System.out.println("1. Ingresar nuevo comprador: ");
+                System.out.println("2. Ofertar por un vehiculo ");
+                int op2=sc.nextInt();
+                switch(op2){
+                    case 1:
+                    System.out.println("Ingrese los datos");    
+                    System.out.println("Nombres");
+                    String nomb=sc.nextLine();
+                    System.out.println("Apellidos: ");
+                    String apell=sc.nextLine();
+                    System.out.println("Correo Elecectronico: ");
+                    String correo= sc.nextLine();
+                        while(!(correo.contains("@")&&(correo.contains(".com") || correo.contains("ec") || correo.contains("es")))){
+                            System.out.print("Correo Invalido, Ingresa otro: ");
+                            String correoN=sc.nextLine();
+                            correo=correoN;
+                        }
+                
+                        System.out.println("Organización: ");
+                        String org= sc.nextLine();
+                    System.out.println("Usuario: ");
+                    String user=sc.nextLine();
+                    System.out.println("Clave: ");
+                    String cont= sc.nextLine();
+                    case 2:
+                        
+                }
+                
+                    
                 
             
                 
