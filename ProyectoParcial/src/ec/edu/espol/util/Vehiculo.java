@@ -16,28 +16,30 @@ public abstract class Vehiculo {
     protected String tipoVehiculo; 
     protected String placa;
     protected String marca;
+    protected String modelo;
     protected String motor;  // Tipo de motor
     protected int anio;
     protected double recorrido;
     protected String color;
     protected String combustible;  //Tipo de combustible
-    protected double precio;
     protected String transmision;
+    protected double precio;
     
     //CONSTRUCTORES
     public Vehiculo() {
     }
-    public Vehiculo(String tipoVehiculo, String placa, String marca, String motor, int anio, double recorrido, String color, String combustible, double precio, String transmision) {
+    public Vehiculo(String tipoVehiculo, String placa, String marca, String modelo, String motor, int anio, double recorrido, String color, String combustible, String transmision, double precio) {
         this.tipoVehiculo = tipoVehiculo;
         this.placa = placa;
         this.marca = marca;
+        this.modelo= modelo;
         this.motor = motor;
         this.anio = anio;
         this.recorrido = recorrido;
         this.color = color;
         this.combustible = combustible;
-        this.precio = precio;
         this.transmision = transmision;
+        this.precio = precio;
     }
     
     //GETTERS
@@ -49,6 +51,9 @@ public abstract class Vehiculo {
     }
     public String getMarca() {
         return marca;
+    }
+    public String getModelo() {
+        return modelo;
     }
     public String getMotor() {
         return motor;
@@ -65,15 +70,14 @@ public abstract class Vehiculo {
     public String getCombustible() {
         return combustible;
     }
-    public double getPrecio() {
-        return precio;
-    }
     public String getTransmision() {
         return transmision;
     }
+    public double getPrecio() {
+        return precio;
+    }
     
     //SETTERS
-    
     public void setTipoVehiculo(String tipoVehiculo) {
         if (tipoVehiculo!= null)
             this.tipoVehiculo = tipoVehiculo;
@@ -84,6 +88,9 @@ public abstract class Vehiculo {
     }
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
     public void setMotor(String motor) {
         this.motor = motor;
@@ -102,12 +109,12 @@ public abstract class Vehiculo {
     public void setCombustible(String combustible) {
         this.combustible = combustible;
     }
+    public void setTransmision(String transmision) {
+        this.transmision = transmision;
+    }
     public void setPrecio(double precio) {
         if (precio>=0)
             this.precio = precio;
-    }
-    public void setTransmision(String transmision) {
-        this.transmision = transmision;
     }
     
     //EQUALS
@@ -127,7 +134,7 @@ public abstract class Vehiculo {
     //TOSTRING
     @Override
     public String toString() {
-        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo:" + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nPrecio: " + precio + "\nTransmision: " + transmision;
+        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo:" + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nTransmision: " + transmision + "\nPrecio: " + precio ;
     }
     
 }

@@ -16,8 +16,8 @@ public class Motocicleta extends Vehiculo {
     //CONSTRUCTORES
     public Motocicleta() {
     }
-    public Motocicleta(String tipoVehiculo, String placa, String marca, String motor, int año, double recorrido, String color, String combustible, double precio, String transmision, String tipo) {
-        super(tipoVehiculo, placa, marca, motor, año, recorrido, color, combustible, precio, transmision);
+    public Motocicleta(String tipoVehiculo, String placa, String marca, String modelo, String motor, int año, double recorrido, String color, String combustible, String transmision, double precio, String tipo) {
+        super(tipoVehiculo, placa, marca, modelo, motor, año, recorrido, color, combustible, transmision, precio);
         this.tipo = tipo;
     }
     
@@ -34,6 +34,6 @@ public class Motocicleta extends Vehiculo {
     //TOSTRING
     @Override
     public String toString() {
-        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo: " + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nPrecio: " + precio + "\nTransmision: " + transmision + "\nTipo de motocicleta: " + tipo;
+        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo: " + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nModelo: " +  modelo + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nTransmision: " + transmision + "\nTipo de motocicleta: " + tipo + "\nPrecio: " + precio;
     }
 }

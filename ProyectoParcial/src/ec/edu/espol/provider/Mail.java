@@ -16,6 +16,12 @@ import javax.mail.internet.MimeMessage;
  *
  * @author Mile
  */
+
+/*FUENTEs:
+    1. https://www.campusmvp.es/recursos/post/como-enviar-correo-electronico-con-java-a-traves-de-gmail.aspx
+    2. https://www.youtube.com/watch?v=7khcvgM9rcM&t=285s
+*/
+
 public class Mail {
      public static void enviarMail(String destinatario, String asunto, String cuerpo){             
         String remitente = "stvnmr9@gmail.com";

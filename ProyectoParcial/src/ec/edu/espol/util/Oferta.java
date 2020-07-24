@@ -55,6 +55,11 @@ public class Oferta {
             this.precioOfertado = precioOfertado;
     }
     
+    //MÉTODOS
+    public void registrarOferta(){
+        //¿?
+    }
+        
     //EQUALS
     @Override
     public boolean equals(Object o) {
