@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public abstract class Vehiculo {
     //ATRIBUTOS
+    protected String tipoVehiculo; 
     protected String placa;
     protected String marca;
     protected String motor;  // Tipo de motor
@@ -26,7 +27,8 @@ public abstract class Vehiculo {
     //CONSTRUCTORES
     public Vehiculo() {
     }
-    public Vehiculo(String placa, String marca, String motor, int anio, double recorrido, String color, String combustible, double precio, String transmision) {
+    public Vehiculo(String tipoVehiculo, String placa, String marca, String motor, int anio, double recorrido, String color, String combustible, double precio, String transmision) {
+        this.tipoVehiculo = tipoVehiculo;
         this.placa = placa;
         this.marca = marca;
         this.motor = motor;
@@ -39,6 +41,9 @@ public abstract class Vehiculo {
     }
     
     //GETTERS
+    public String getTipoVehiculo() {
+        return tipoVehiculo;
+    }
     public String getPlaca() {
         return placa;
     }
@@ -48,7 +53,7 @@ public abstract class Vehiculo {
     public String getMotor() {
         return motor;
     }
-    public int getAño() {
+    public int getAnio() {
         return anio;
     }
     public double getRecorrido() {
@@ -68,8 +73,14 @@ public abstract class Vehiculo {
     }
     
     //SETTERS
+    
+    public void setTipoVehiculo(String tipoVehiculo) {
+        if (tipoVehiculo!= null)
+            this.tipoVehiculo = tipoVehiculo;
+    }
     public void setPlaca(String placa) {
-        this.placa = placa;
+        if (placa!=null)
+            this.placa = placa;
     }
     public void setMarca(String marca) {
         this.marca = marca;
@@ -77,7 +88,7 @@ public abstract class Vehiculo {
     public void setMotor(String motor) {
         this.motor = motor;
     }
-    public void setAño(int anio) {
+    public void setAnio(int anio) {
         if (anio>=1800)
             this.anio = anio;
     }
@@ -110,13 +121,13 @@ public abstract class Vehiculo {
             return false;
         
         Vehiculo other = (Vehiculo)o;
-        return Objects.equals(this, other);
+        return Objects.equals(this.placa, other.placa);
     }
     
     //TOSTRING
     @Override
     public String toString() {
-        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nPlaca: " + placa + "\nMarca: " + marca + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nPrecio: " + precio + "\nTransmision: " + transmision;
+        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo:" + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nPrecio: " + precio + "\nTransmision: " + transmision;
     }
     
 }

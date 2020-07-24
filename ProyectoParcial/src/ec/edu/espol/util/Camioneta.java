@@ -16,8 +16,8 @@ public class Camioneta extends Vehiculo{
     //CONSTRUCTORES
     public Camioneta() {
     }
-    public Camioneta(String placa, String marca, String motor, int anio, double recorrido, String color, String combustible, double precio, String transmision, int vidrios) {
-        super(placa, marca, motor, anio, recorrido, color, combustible, precio, transmision);
+    public Camioneta(String tipoVehiculo, String placa, String marca, String motor, int anio, double recorrido, String color, String combustible, double precio, String transmision, int vidrios) {
+        super(tipoVehiculo, placa, marca, motor, anio, recorrido, color, combustible, precio, transmision);
         this.vidrios = vidrios;
     }
     
@@ -35,7 +35,7 @@ public class Camioneta extends Vehiculo{
     //TOSTRING
     @Override
     public String toString() {
-        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo: Camioneta" + "\nPlaca: " + placa + "\nMarca: " + marca + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nPrecio: " + precio + "\nTransmision: " + transmision + "\nNúmero de ventanas: " + vidrios;
+        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo: " + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nPrecio: " + precio + "\nTransmision: " + transmision + "\nNúmero de ventanas: " + vidrios;
     }
 
     
