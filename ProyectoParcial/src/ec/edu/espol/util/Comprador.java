@@ -19,9 +19,9 @@ import java.util.Scanner;
  */
 public class Comprador extends Usuario {
     
-    public Comprador(String nombres, String apellidos, String correo, String organizacion, String usuario, String clave)
+    public Comprador(String nombres, String apellidos, String ci, String correo, String organizacion, String usuario, String clave)
     {
-        super(nombres,apellidos,correo,organizacion,usuario,clave);
+        super(nombres,apellidos, ci,correo,organizacion,usuario,clave);
     }
     
     // Retornará falso si la lista no contiene los atributos. 
@@ -58,5 +58,6 @@ public class Comprador extends Usuario {
             System.out.println(v.getMessage());
         }
     }
+    
     
 }

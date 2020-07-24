@@ -20,8 +20,8 @@ import java.util.Scanner;
  */
 public class Vendedor extends Usuario {
  
-    public Vendedor(String nom, String ap, String corr, String org, String us, String cl) {
-        super(nom, ap, corr, org, us, cl);
+    public Vendedor(String nom, String ap, String ci,String corr, String org, String us, String cl) {
+        super(nom, ap, ci, corr, org, us, cl);
     }
 
     

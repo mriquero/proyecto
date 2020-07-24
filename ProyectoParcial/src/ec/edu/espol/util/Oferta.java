@@ -54,11 +54,6 @@ public class Oferta {
         if (precioOfertado>=0)
             this.precioOfertado = precioOfertado;
     }
-    
-    //MÉTODOS
-    public void registrarOferta(){
-        //¿?
-    }
         
     //EQUALS
     @Override
@@ -78,7 +73,7 @@ public class Oferta {
 
     @Override
     public String toString() {
-        return "Oferta " + numOferta + "\nCorreo: " + comprador.getCorreo + "\nPrecio Ofertado: " + precioOfertado;
+        return "Oferta " + numOferta + "\nCorreo: " + comprador.getCorreo() + "\nPrecio Ofertado: " + precioOfertado;
     }
     
 }
