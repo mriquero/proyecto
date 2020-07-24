@@ -20,7 +20,6 @@ public class Venta {
     
     //CONSTRUCTORES
     public Venta() {
-        iDVenta = iDVenta +1;
     }
     public Venta(Vehiculo vehiculo, Vendedor vendedor, Oferta oferta) {
         this.vehiculo = vehiculo;

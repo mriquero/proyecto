@@ -13,15 +13,16 @@ public class Oferta {
     //ATRIBUTOS
     private static int numOferta = 0;
     private Comprador comprador;
+    private String placaVehiculo;
     private double precioOfertado;
     
     
     //CONSTRUCTORES
     public Oferta() {
-        numOferta = numOferta +1;
     }
-    public Oferta(Comprador comprador, double precioOfertado) {
+    public Oferta(Comprador comprador, Vehiculo vehiculo, double precioOfertado) {
         this.comprador = comprador;
+        this.placaVehiculo = vehiculo.getPlaca();
         this.precioOfertado = precioOfertado;
         numOferta = numOferta + 1;
     }
@@ -33,7 +34,10 @@ public class Oferta {
     public Comprador getComprador() {
         return comprador;
     }
-    public double getPrecioOfertado() {
+    public String getPlacaVehiculo() {
+        return placaVehiculo;
+    }
+        public double getPrecioOfertado() {
         return precioOfertado;
     }
     
@@ -42,7 +46,11 @@ public class Oferta {
         if (comprador != null)
             this.comprador = comprador;
     }
-    public void setPrecioOfertado(double precioOfertado) {
+    public void setPlacaVehiculo(String placaVehiculo) {
+        if (placaVehiculo!= null)
+            this.placaVehiculo = placaVehiculo;
+    }
+        public void setPrecioOfertado(double precioOfertado) {
         if (precioOfertado>=0)
             this.precioOfertado = precioOfertado;
     }
