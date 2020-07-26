@@ -58,8 +58,6 @@ public class Vendedor extends Usuario {
         {
             System.out.println(v.getMessage());
         }
-    }
-    
-   
-    
+    }    
+    /**/
 }

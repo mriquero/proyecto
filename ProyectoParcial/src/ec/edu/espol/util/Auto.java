@@ -5,6 +5,10 @@
  */
 package ec.edu.espol.util;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Mile
@@ -20,6 +24,23 @@ public class Auto extends Vehiculo{
         super(tipoVehiculo, placa, marca, modelo, motor, anio, recorrido, color, combustible, transmision, precio);
         this.vidrios = vidrios;
     }
+
+    public Auto(String tipoVehiculo, int anio, double recorrido, double precio) {
+        super(tipoVehiculo, anio, recorrido, precio);
+    }
+    
+public static ArrayList<Vehiculo> leerRegistroAutos(String archivo){
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+        try(Scanner sc= new Scanner(new File(archivo))){
+            while(sc.hasNextLine()){
+                String[] atributos= sc.nextLine().split(",");                
+                //Auto v= new Auto((String)atributos[0],(int)atributos[5],(double)atributos[6],(double)atributos[11]);
+                //vehiculos.add(v);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }return vehiculos;
+    }    
     
     //GETTERS
     public int getVidrios() {
@@ -35,7 +56,7 @@ public class Auto extends Vehiculo{
     //TOSTRING
     @Override
     public String toString() {
-        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo: " + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nTransmision: " + transmision + "\nNúmero de ventanas: " + vidrios + "\nPrecio: " + precio ;
+        return  tipoVehiculo + "," + placa + "," + marca + "," + modelo + "," + motor + "," + anio + "," + recorrido + "," + color + "," + combustible + "," + transmision + "," + vidrios + "," + precio ;
     }
     
 }

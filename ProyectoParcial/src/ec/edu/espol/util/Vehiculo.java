@@ -5,6 +5,10 @@
  */
 package ec.edu.espol.util;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -24,6 +28,7 @@ public abstract class Vehiculo {
     protected String combustible;  //Tipo de combustible
     protected String transmision;
     protected double precio;
+    protected ArrayList<Registros> registros;
     
     //CONSTRUCTORES
     public Vehiculo() {
@@ -40,7 +45,16 @@ public abstract class Vehiculo {
         this.combustible = combustible;
         this.transmision = transmision;
         this.precio = precio;
+        this.registros=new ArrayList<>();
     }
+
+    public Vehiculo(String tipoVehiculo, int anio, double recorrido, double precio) {
+        this.tipoVehiculo = tipoVehiculo;
+        this.anio = anio;
+        this.recorrido = recorrido;
+        this.precio = precio;
+    }
+    
     
     //GETTERS
     public String getTipoVehiculo() {
@@ -118,7 +132,7 @@ public abstract class Vehiculo {
     }
     
     //EQUALS
-    @Override
+    @Override    
     public boolean equals(Object o) {
         if (o==null)        
             return false;
@@ -129,12 +143,25 @@ public abstract class Vehiculo {
         
         Vehiculo other = (Vehiculo)o;
         return Objects.equals(this.placa, other.placa);
-    }
+    }  
+    public void registrarVehiculo(String archivo)
+    {
+        try(FileWriter fw = new FileWriter(archivo,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter addTxt = new PrintWriter(bw))
+        {
+            addTxt.println(this);
+        }
+        catch (Exception v)
+        {
+            System.out.println(v.getMessage());
+        }
+    }    
+    
     
     //TOSTRING
     @Override
     public String toString() {
-        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo:" + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nTransmision: " + transmision + "\nPrecio: " + precio ;
-    }
-    
+        return this.tipoVehiculo+ ","+ this.color+ ","+ this.combustible+","+ this.marca+","+ this.recorrido+","+ this.modelo+","+ this.motor+","+this.anio+","+ this.placa+ ","+ this.precio+","+ this.transmision;
+    }    
 }
