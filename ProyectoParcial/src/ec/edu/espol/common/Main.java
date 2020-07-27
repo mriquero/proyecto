@@ -250,7 +250,7 @@ public class Main {
                                             case 2:
                                                 indice=i;
                                                 i=f;
-                                                System.out.println("Se ha aceptado una oferta");
+                                                System.out.println("Se ha aceptado una oferta \nEnviando correo de confirmación...");
                                                 Venta venta=vendedor.aceptarOferta(oferta);
                                                 /**/
                                                 break;
@@ -271,7 +271,7 @@ public class Main {
                                             case 3:
                                                 indice=i;
                                                 i=f;
-                                                System.out.println("Se ha aceptado una oferta");
+                                                System.out.println("Se ha aceptado una oferta \nEnviando correo de confirmación...");
                                                 Venta venta=vendedor.aceptarOferta(oferta);
                                             default:
                                                 i=f;
@@ -287,8 +287,9 @@ public class Main {
                                             case 2:
                                                 indice=i;
                                                 i=f;
-                                                System.out.println("Se ha aceptado una oferta");
+                                                System.out.println("Se ha acepta una oferta \nEnviando correo de confirmación...");
                                                 Venta venta=vendedor.aceptarOferta(oferta);
+                                                System.out.println("");
                                                 break;
                                             default:
                                                 i=f;

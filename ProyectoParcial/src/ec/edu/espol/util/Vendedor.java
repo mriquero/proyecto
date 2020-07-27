@@ -208,7 +208,7 @@ public class Vendedor extends Usuario {
     public Venta aceptarOferta(Oferta oferta){
         Venta venta= new Venta(oferta.getPlacaVehiculo(), this, oferta);
         venta.setVendido(true);
-        String destinatario = oferta.getCorreo();
+        String destinatario = "milenariquero@gmail.com";
         String asunto = "SE HA ACEPTADO SU OFERTA";
         String cuerpo = venta.toString();
         Mail.enviarMail(destinatario, asunto, cuerpo);
