@@ -20,7 +20,7 @@ import java.util.Scanner;
  * @author macbookpro
  */
 public class Vendedor extends Usuario {
-<<<<<<< HEAD
+
     private Vehiculo v;
 =======
     private ArrayList<Venta> ventas;
