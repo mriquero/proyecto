@@ -30,7 +30,7 @@ public class Oferta {
         this.comprador = comprador;
         this.precioOfertado = precioOfertado;
         this.vehiculo = vehiculo;
-        numOferta = numOferta + 1;
+        this.numOferta = numOferta + 1;
     }
    
     //GETTERS

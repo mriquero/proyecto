@@ -386,13 +386,11 @@ public class Main {
                                 atrib.add(finAnio);
                                 atrib.add(iniPrec);
                                 
-                                ArrayList<Vehiculo> vehiculos = Vehiculo.Buscar("Vehiculos.txt", atrib);
-                               
+                                ArrayList<String> vehiculos = Vehiculo.Buscar("Vehiculos.txt", atrib);
                                 double precioOfertar=0;
                                 int i=0;
                                 int indice=0;
                                 int f=vehiculos.size();
-
                                 while (i<f){
                                     System.out.println(i);
                                     System.out.println(vehiculos.get(i));
@@ -450,8 +448,31 @@ public class Main {
                                     }
                                 }
                                 //Crear objeto Oferta
-                                Oferta oferta= new Oferta(comprador, vehiculos.get(indice),precioOfertar);
-                                oferta.registrarOferta("Ofertas.txt");
+                                String atri= vehiculos.get(indice);
+                                String[] aAtrib = atri.split(",");
+                                switch (aAtrib[0]){
+                                        case "auto":
+                                            Auto vn= new Auto(aAtrib[0],aAtrib[1],aAtrib[2],aAtrib[3],aAtrib[4],Integer.parseInt(aAtrib[5]), Double.parseDouble(aAtrib[6]),aAtrib[7],aAtrib[8],aAtrib[9],Double.parseDouble(aAtrib[11]),Integer.parseInt(aAtrib[10]));
+                                            Oferta oferta= new Oferta(comprador, vn ,precioOfertar);
+                                            oferta.registrarOferta("Ofertas.txt");
+                                            break;
+                                        case "camion":
+                                            Camion vn1= new Camion(aAtrib[0],aAtrib[1],aAtrib[2],aAtrib[3],aAtrib[4],Integer.parseInt(aAtrib[5]), Double.parseDouble(aAtrib[6]),aAtrib[7],aAtrib[8],aAtrib[9],Double.parseDouble(aAtrib[11]),Integer.parseInt(aAtrib[10]));
+                                            Oferta oferta1= new Oferta(comprador, vn1 ,precioOfertar);
+                                            oferta1.registrarOferta("Ofertas.txt");
+                                            break;
+                                        case "camioneta":
+                                            Camioneta vn2= new Camioneta(aAtrib[0],aAtrib[1],aAtrib[2],aAtrib[3],aAtrib[4],Integer.parseInt(aAtrib[5]), Double.parseDouble(aAtrib[6]),aAtrib[7],aAtrib[8],aAtrib[9],Double.parseDouble(aAtrib[11]),Integer.parseInt(aAtrib[10]));
+                                            Oferta oferta2= new Oferta(comprador, vn2 ,precioOfertar);
+                                            oferta2.registrarOferta("Ofertas.txt");
+                                            break;
+                                        case "motocicleta":
+                                            Motocicleta vn3= new Motocicleta(aAtrib[0],aAtrib[1],aAtrib[2],aAtrib[3],aAtrib[4],Integer.parseInt(aAtrib[5]), Double.parseDouble(aAtrib[6]),aAtrib[7],aAtrib[8],aAtrib[9],Double.parseDouble(aAtrib[11]),aAtrib[10]);
+                                            Oferta oferta3= new Oferta(comprador, vn3 ,precioOfertar);
+                                            oferta3.registrarOferta("Ofertas.txt");break;
+                                        default:
+                                            break;
+                                    }
                                 break;
                             default:
                                 break;                       
