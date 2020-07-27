@@ -13,10 +13,11 @@ import java.util.Scanner;
  * @author macbookpro
  */
 public class Comprador extends Usuario {
-    
+    private ArrayList<Oferta> ofertas;
     public Comprador(String nombres, String apellidos, String ci, String correo, String organizacion, String usuario, String clave)
     {
         super(nombres,apellidos, ci,correo,organizacion,usuario,clave);
+        ofertas= new ArrayList<>();
     }
     public static void CrearDoc(){
         try{
@@ -49,16 +50,6 @@ public class Comprador extends Usuario {
     }
     public void registrarComprador(String archivo)
     {
-        /*String archivo="Compradores.txt";
-        File nfile= new File(archivo);  
-        try{
-            PrintWriter archCompr= new PrintWriter(archivo);
-            archCompr.println(this);
-            archCompr.close();
-        }catch(Exception v){
-            System.out.println(v.getMessage());
-        }*/
-        
         try(FileWriter fw = new FileWriter(archivo,true);
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter addTxt = new PrintWriter(bw))
@@ -70,7 +61,11 @@ public class Comprador extends Usuario {
             System.out.println(v.getMessage());
         }
     }
-    
+    public Oferta ofertar(Vehiculo vehiculo, double precioOfertado){
+        Oferta oferta = new Oferta(this, vehiculo, precioOfertado);
+        ofertas.add(oferta);
+        return oferta;
+    }
 
     @Override
     public String toString() {
