@@ -5,6 +5,10 @@
  */
 package ec.edu.espol.util;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 /**
  *
  * @author Mile
@@ -64,11 +68,24 @@ public class Oferta {
             this.precioOfertado = precioOfertado;
     }
     
-    //CREAR MÉTODO DE IMPRIMIR OFERTA
     public void imprimirOferta(int i){
         System.out.println("Oferta " + i);
         System.out.println("Correo: " + this.comprador.getCorreo() + "\nPrecio Ofertado: " + this.precioOfertado);
     }    
+    
+    public void registrarOferta(String archivo)
+    {
+        try(FileWriter fw = new FileWriter(archivo,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter addTxt = new PrintWriter(bw))
+        {
+            addTxt.println(this);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
     
     //EQUALS
     @Override

@@ -16,6 +16,8 @@ import ec.edu.espol.util.Encriptar;
 import static ec.edu.espol.util.Encriptar.encriptaHex;
 import static ec.edu.espol.util.Encriptar.to256;
 import ec.edu.espol.util.Motocicleta;
+import ec.edu.espol.util.Oferta;
+import ec.edu.espol.util.Usuario;
 import ec.edu.espol.util.Vehiculo;
 import ec.edu.espol.util.Vendedor;
 import java.io.BufferedReader;
@@ -103,14 +105,14 @@ public class Main {
                                 break;
                                 
                             case 2:   //Esta opción ingresa un nuevo vehículo
-                                boolean validar=false;  //CAMBIAR!!!
+                                boolean validar;  
                                 do{System.out.print("Ingrese su usuario: ");
                                 String us=sc.next();
                                 System.out.print("Ingrese su contraseña: ");
                                 String cont=sc.next();
                                 String contEncrip= encriptaHex(to256(cont));
                                 System.out.println(contEncrip);
-                                //validar= Usuario.validarIngreso("vendedores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
+                                validar= Usuario.validarIngreso("vendedores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
                                 }while (validar==false);
                                     System.out.println("Ingrese el tipo de vehiculo que desea registrar: ");
                                     String tipoVehiculo=sc.next();
@@ -162,6 +164,15 @@ public class Main {
                                     }
                                 break;
                             case 3:
+                                boolean validar1;  
+                                do{System.out.print("Ingrese su usuario: ");
+                                String us=sc.next();
+                                System.out.print("Ingrese su contraseña: ");
+                                String cont=sc.next();
+                                String contEncrip= encriptaHex(to256(cont));
+                                System.out.println(contEncrip);
+                                validar= Usuario.validarIngreso("vendedores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
+                                }while (validar==false);
                                 boolean existe=false;
                                 String[] infovehiculo;
                                 do{
@@ -293,7 +304,24 @@ public class Main {
                                 System.out.println(us1);
                                 break;
                             case 2:
-                                System.out.println("Esta opcion permite al comprador ofertar");
+                                boolean validar;
+                                Comprador comprador;
+                                do{
+                                System.out.print("Ingrese su usuario: ");
+                                String us=sc.next();
+                                System.out.print("Ingrese su contraseña: ");
+                                String cont=sc.next();
+                                String contEncrip= encriptaHex(to256(cont));
+                                System.out.println(contEncrip);
+                                validar= Usuario.validarIngreso("Compradores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
+                                }while (validar==false);
+                                
+                                ArrayList<Vehiculo> vehiculos = Vehiculo.buscar("Vehiculos.txt", parametros);
+                                Vehiculo vehiculo = vehiculos.get(0);
+                                System.out.print("Ingrese el precio a ofertar: ");
+                                double precioOfertar= sc.nextDouble();
+                                
+                                Oferta oferta=comprador.ofertar(vehiculo, precioOfertar);
                                 break;
                             default:
                                 break;                       

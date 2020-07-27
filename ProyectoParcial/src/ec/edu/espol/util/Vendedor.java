@@ -5,7 +5,6 @@
  */
 package ec.edu.espol.util;
 
-import ec.edu.espol.provider.Mail;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,21 +19,20 @@ import java.util.Scanner;
  * @author macbookpro
  */
 public class Vendedor extends Usuario {
-
-    private Vehiculo v;
-=======
-    private ArrayList<Venta> ventas;
     
->>>>>>> f7875a50b673bfa1b7abe1138a1326cd65ad89da
+    private Vehiculo v;
+    private ArrayList<Venta> ventas;
+ 
     public Vendedor(String nom, String ap, String ci,String corr, String org, String us, String cl) {
-        super(nom, ap, ci, corr, org, us, cl);
-        ventas= new ArrayList<> ();
+        super(nom, ap, ci,corr, org, us, cl);
+        
+         ventas = new ArrayList<>();
     }
 
     
     // Retornará falso si la lista no contiene los atributos. 
     // Si contiene al menos uno --> retorna verdadero y ya no sería único.
-    public boolean validarRegistro(String archivo) throws FileNotFoundException
+    public boolean validarRegistro(String archivo)
     {
         ArrayList<String> atributos = new ArrayList<>();
         try(Scanner sc = new Scanner(new File(archivo)))
@@ -49,6 +47,10 @@ public class Vendedor extends Usuario {
                 atributos.add(usuarioRe);   
             }
         }
+        catch(FileNotFoundException ex)
+        {
+            System.out.println("File not found");
+        }
         
         return atributos.contains(this.usuario) || atributos.contains(this.correo);
     }
@@ -59,13 +61,14 @@ public class Vendedor extends Usuario {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter addTxt = new PrintWriter(bw))
         {
-            addTxt.println(this);
+            addTxt.println(this.toString());
         }
         catch (Exception v)
         {
             System.out.println(v.getMessage());
         }
     }
+    
     public boolean validarPlaca(String placa, String archivo)
     {
         ArrayList<String> placas = new ArrayList<>();
@@ -87,9 +90,11 @@ public class Vendedor extends Usuario {
         
         return placas.contains(placa);
         
-    }    
-<<<<<<< HEAD
-    public Vehiculo ingresaTipo()
+    }
+    // El vendedor llama al método ingresaTipo
+    // Va a pedir ingreso por consola
+    // Retorna objeto vehiculo para usarlo en el método registrarVehiculo
+     public Vehiculo ingresaTipo()
     {
         System.out.println("Ingrese el tipo de vehiculo que quisiera ingresar, puede ser auto, camioneta, camión o moto:");
         Scanner input = new Scanner(System.in);
@@ -141,7 +146,11 @@ public class Vendedor extends Usuario {
         return v;
              
     }
-    public void registrarVehiculo(Vehiculo o)
+     
+     
+     // El vendedor llama a registrar vehiculo y envía el objeto obtenido en ingresaTipo().
+     // Se guarda en una variable Vehiculo v = ingresaTipo().
+     public void registrarVehiculo(Vehiculo o)
      {
          try(FileWriter fw = new FileWriter(o.getTipoVehiculo()+".txt",true);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -157,6 +166,7 @@ public class Vendedor extends Usuario {
             System.out.println(ex.getMessage());
         }  
      }
+     
      public static void eliminarVehiculo(Venta venta)
      {
          String placa = venta.getVehiculo().getPlaca();
@@ -194,22 +204,10 @@ public class Vendedor extends Usuario {
              System.out.println("No existe esa compra");
          }
      }
+     
     @Override
-      public String toString()
+     public String toString()
      {
          return nombres + "," + apellidos + "," + correo + "," + organizacion + "," + usuario + "," + clave;
-     }
-=======
-    
-    public Venta aceptarOferta(Oferta oferta){
-        Venta venta= new Venta(oferta.getVehiculo(), this, oferta);
-        venta.setVendido(true);
-        String destinatario = oferta.getComprador().getCorreo();
-        String asunto = "SE HA ACEPTADO SU OFERTA";
-        String cuerpo = venta.toString();
-        Mail.enviarMail(destinatario, asunto, cuerpo);
-        ventas.add(venta);
-        return venta;
-    }
->>>>>>> f7875a50b673bfa1b7abe1138a1326cd65ad89da
+     }          
 }

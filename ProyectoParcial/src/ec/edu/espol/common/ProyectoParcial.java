@@ -113,7 +113,7 @@ public class ProyectoParcial {
                         
                         Auto vn=new Auto(tipoVehiculo,placa,marca, modelo, motor, anio, recorrido, color, combustible, transmision, precio,vidrioN);
                         vn.registrarVehiculo("Vehiculos.txt");
-                        ArrayList<Auto> listAut=Auto.leerRegistroAutos("Vehiculos.txt");
+                        ArrayList<Vehiculo> listAut=Auto.leerRegistroAutos("Vehiculos.txt");
                         ArrayList<Registros> listReg= Registros.leerRegistro("Registros.txt");
                         break;                    
                     case 3: 

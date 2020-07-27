@@ -34,8 +34,7 @@ public class Motocicleta extends Vehiculo {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    @Override
+
     public void imprimirVehiculo() {
         System.out.println("**** DATOS DEL VEHICULO ****");
         System.out.println("Tipo de Vehículo: " + this.tipoVehiculo + "\nPlaca: " + this.placa + "\nMarca: " + this.marca + "\nModelo: " + this.modelo + "\nMotor: " + this.motor + "\nAño: " + this.anio + "\nRecorrido: " + this.recorrido + "\nColor: " + this.color + "\nTipo de Combustible: " + this.combustible + "\nTrnasmisión: " + this.transmision + "\nTipo de Motocicleta: " + this.tipo +"\nPrecio: " + this.precio);
