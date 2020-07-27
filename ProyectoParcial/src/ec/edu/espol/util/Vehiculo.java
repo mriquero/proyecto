@@ -161,7 +161,6 @@ public abstract class Vehiculo {
     } 
     public  static ArrayList<String> Buscar(String Archivo,ArrayList<String> a){           //[ motocicleta, 500, rojo]
         ArrayList<String> vehiculos= new ArrayList<>();
-        //String archivo = a.get(0)+".txt";
         try(Scanner sc= new Scanner(new File(Archivo))){
         while(sc.hasNext()){                
              double recInLista=Double.parseDouble(a.get(1));
@@ -174,23 +173,11 @@ public abstract class Vehiculo {
              if (tipo.equals(a.get(0))&&(recInLista>=recorrido)&&(recFinLista<=recorrido)){
                  vehiculos.add(linea);
              }
-             /*String rec=arr[6];
-             String anio=arr[7];
-             String precio=arr[9];
-             //atributos.add(tipo);
-             //atributos.add(rec);                         
-             /*while (v1.getTipoVehiculo().equals(tipo)||v1.getRecorrido()==Double.parseDouble(rec)){
-                atributos.add(tipo);
-                atributos.add(rec);
-                atributos.add(anio);
-                atributos.add(precio);
-             }*/
          }   
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-     return vehiculos; 
-        
+     return vehiculos;
     }
 
     //TOSTRING

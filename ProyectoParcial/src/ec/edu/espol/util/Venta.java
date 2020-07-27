@@ -17,6 +17,7 @@ public class Venta {
     private Vehiculo vehiculo;
     private Vendedor vendedor;
     private Oferta oferta;
+    String placaVehiculo;
     
     //CONSTRUCTORES
     public Venta() {
@@ -25,8 +26,12 @@ public class Venta {
         this.vehiculo = vehiculo;
         this.vendedor = vendedor;
         this.oferta = oferta;
-        //vendido = vendedor.aceptarOferta();
         iDVenta = iDVenta +1;
+    }
+    public Venta(String placa, Vendedor vendedor, Oferta oferta) {
+        this.placaVehiculo = placa;
+        this.vendedor = vendedor;
+        this.oferta = oferta;
     }
     
     //GETTERS

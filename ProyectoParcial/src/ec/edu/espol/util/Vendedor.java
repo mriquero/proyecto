@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.util;
 
+import ec.edu.espol.provider.Mail;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -204,7 +205,15 @@ public class Vendedor extends Usuario {
              System.out.println("No existe esa compra");
          }
      }
-     
+    public Venta aceptarOferta(Oferta oferta){
+        Venta venta= new Venta(oferta.getPlacaVehiculo(), this, oferta);
+        venta.setVendido(true);
+        String destinatario = oferta.getCorreo();
+        String asunto = "SE HA ACEPTADO SU OFERTA";
+        String cuerpo = venta.toString();
+        Mail.enviarMail(destinatario, asunto, cuerpo);
+        return venta;
+    }
     @Override
      public String toString()
      {

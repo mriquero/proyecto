@@ -20,6 +20,7 @@ import ec.edu.espol.util.Oferta;
 import ec.edu.espol.util.Usuario;
 import ec.edu.espol.util.Vehiculo;
 import ec.edu.espol.util.Vendedor;
+import ec.edu.espol.util.Venta;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,11 +38,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        /*String destinatario = "milenariquero@gmail.com";
-        String asunto = "Esto es una prueba de envio de correo en Java";
-        String cuerpo = "Se esta realizando una prueba de correo...";
-        
-        Mail.enviarMail(destinatario, asunto, cuerpo);*/
         Scanner sc= new Scanner(System.in);
         sc.useDelimiter("\n");
         ArrayList<Integer> opciones = new ArrayList<>();
@@ -180,50 +176,72 @@ public class Main {
                                 cont0=sc.next();
                                 String contEncrip0= encriptaHex(to256(cont0));
                                 //System.out.println(contEncrip0);
-                                validar= Usuario.validarIngreso("Vendedores.txt",us0,contEncrip0); //Aqui se debería validar el usuario y la contraseña
+                                validar= Usuario.validarIngreso("Vendedores.txt",us0,contEncrip0); //Aqui se valida el usuario y la contraseña
                                 }while (validar==false);
+                                //----------------------------------------------------------------
+                                ArrayList<String> info = new ArrayList<> ();
+                                try{
+                                    BufferedReader buff = new BufferedReader(new FileReader("Vendedores.txt"));
+                                    String buffRead;
+                                    while ((buffRead=buff.readLine())!=null){
+                                        String [] linea= buffRead.split(",");
+                                        if (linea[5].equals(us0)){
+                                            info.add(linea[0]);
+                                            info.add(linea[1]);
+                                            info.add(linea[2]);
+                                            info.add(linea[3]);
+                                            info.add(linea[4]);
+                                            info.add(linea[5]);
+                                            info.add(linea[6]);
+                                        }
+                                    }
+                                }catch(Exception e){
+                                    System.out.println("File not found");
+                                }
+                                Vendedor vendedor = new Vendedor(info.get(0),info.get(1),info.get(2),info.get(3),info.get(4),info.get(5),info.get(6));
+                                //vendedor.imprimirUsuario();
+                                //----------------------------------------------------------------
                                 boolean existe=false;
-                                String[] infovehiculo;
+                                ArrayList<String> infovehiculo = new ArrayList<>();
+                                String placaOfertas;
                                 do{
                                     System.out.print("Ingrese la placa: ");
-                                    String placaOfertas= sc.next();
+                                    placaOfertas= sc.next();
                                     try (Scanner sc1 = new Scanner (new File ("Vehiculos.txt"))){
                                         while (sc1.hasNextLine()){
-                                            String[] info = sc1.nextLine().split(",");
-                                            if (placaOfertas.equals(info[1])){
+                                            String[] inffo = sc1.nextLine().split(",");
+                                            if (placaOfertas.equals(inffo[1])){
                                                 existe=true;
-                                                infovehiculo= info;
+                                                infovehiculo.add(inffo[0]); infovehiculo.add(inffo[1]);infovehiculo.add(inffo[2]);infovehiculo.add(inffo[3]); infovehiculo.add(inffo[4]);infovehiculo.add(inffo[5]);infovehiculo.add(inffo[6]);infovehiculo.add(inffo[7]);infovehiculo.add(inffo[8]);infovehiculo.add(inffo[9]);infovehiculo.add(inffo[10]);infovehiculo.add(inffo[11]);
                                             }
                                         }
                                     }  catch(Exception e){
                                          System.out.println(e.getMessage());
                                     }
                                 }while(existe==false);
-                                
-                                /*try (Scanner sc1 = new Scanner (new File ("Vehiculos.txt"))){
-                                        while (sc1.hasNextLine()){
-                                            String[] info = sc1.nextLine().split(",");
-                                            if (placaOfertas.equals(info[1])){
-                                                existe=true;
-                                                infovehiculo= info;
-                                            }
+                                ArrayList<String> presentar = new ArrayList<>();
+                                try{
+                                    BufferedReader buff = new BufferedReader(new FileReader("Ofertas.txt"));
+                                    String buffRead;
+                                    while ((buffRead=buff.readLine())!=null){
+                                        String [] linea= buffRead.split(",");
+                                        if (linea[0].equals(placaOfertas)){
+                                            presentar.add(buffRead);
                                         }
-                                    }  catch(Exception e){
-                                         System.out.println(e.getMessage());
-                                }*/
-                                ArrayList<String> presentar = new ArrayList<>();  //Leer archivo ofertas para presentar las ofertas que se desean mostrar
-                                presentar.add("primero ***");
-                                presentar.add("segundo ***");
-                                presentar.add("tercero ***");
+                                    }
+                                }catch(Exception e){
+                                    System.out.println("File not found");
+                                }
                                 int i=0;
                                 int f=presentar.size();
                                 int indice=0;
                                 while (i<f){
-                                    System.out.println(i);
-                                    System.out.println(presentar.get(i));
+                                    System.out.println("Oferta "+(i+1));
+                                    String[] infoOf = presentar.get(i).split(",");
+                                    Oferta oferta = new Oferta(infoOf[0],infoOf[1],Double.parseDouble(infoOf[2]));
+                                    oferta.imprimirOferta();
                                     OpcionesMenu.menuOferta(i, f);
                                     int op = sc.nextInt();
-                                    //System.out.println("--> ");
                                     if (i==0){
                                         switch(op){
                                             case 1:
@@ -233,6 +251,8 @@ public class Main {
                                                 indice=i;
                                                 i=f;
                                                 System.out.println("Se ha aceptado una oferta");
+                                                Venta venta=vendedor.aceptarOferta(oferta);
+                                                /**/
                                                 break;
                                             default:
                                                 i=f;
@@ -252,6 +272,7 @@ public class Main {
                                                 indice=i;
                                                 i=f;
                                                 System.out.println("Se ha aceptado una oferta");
+                                                Venta venta=vendedor.aceptarOferta(oferta);
                                             default:
                                                 i=f;
                                                 break;
@@ -267,6 +288,7 @@ public class Main {
                                                 indice=i;
                                                 i=f;
                                                 System.out.println("Se ha aceptado una oferta");
+                                                Venta venta=vendedor.aceptarOferta(oferta);
                                                 break;
                                             default:
                                                 i=f;
@@ -447,7 +469,6 @@ public class Main {
                                         }
                                     }
                                 }
-                                //Crear objeto Oferta
                                 String atri= vehiculos.get(indice);
                                 String[] aAtrib = atri.split(",");
                                 switch (aAtrib[0]){
@@ -483,6 +504,7 @@ public class Main {
                     break;
             }
         }while(opcion!=3);
+        sc.close();
     }
     
 }
