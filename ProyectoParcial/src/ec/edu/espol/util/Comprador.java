@@ -13,11 +13,13 @@ import java.util.Scanner;
  * @author macbookpro
  */
 public class Comprador extends Usuario {
-    
-    public Comprador(String nombres, String apellidos, String ci, String correo, String organizacion, String usuario, String clave)
+    protected ArrayList<Registros> registrosCompr;
+    public Comprador(String nombres, String apellidos, String ci, String correo, String organizacion, String usuario, String clave )
     {
         super(nombres,apellidos, ci,correo,organizacion,usuario,clave);
+        this.registrosCompr=new ArrayList<>();
     }
+    
     public static void CrearDoc(){
         try{
             String archivo="Compradores.txt";
@@ -27,6 +29,7 @@ public class Comprador extends Usuario {
             System.out.println(v.getMessage());
         }
     }
+   
     // Retornará falso si la lista no contiene los atributos. 
     // Si contiene al menos uno --> retorna verdadero y ya no sería único.
     

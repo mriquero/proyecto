@@ -5,7 +5,11 @@
  */
 package ec.edu.espol.util;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  *
@@ -24,6 +28,30 @@ public class Usuario {
         usuario = us;
         clave = cl;
     }
+    public static boolean validarClave(String archivo,String usuario,String clave)
+    {
+       ArrayList<String> validar = new ArrayList<>();
+        try(Scanner sc = new Scanner(new File(archivo)))
+        {
+            while(sc.hasNextLine())
+            {
+                String linea = sc.nextLine();
+                String arr[] = linea.split(",");
+                String correoUs = arr[5];
+                String usuarioCl = arr[6];
+                validar.add(correoUs);
+                validar.add(usuarioCl);   
+            }
+        }
+        catch(FileNotFoundException ex)
+        {
+            System.out.println("File not found");
+        }
+        
+      return validar.contains(usuario) && validar.contains(clave);
+    }
+   
+    
 
     public String getNombres() {
         return nombres;

@@ -1,3 +1,4 @@
 Comprador,ujs,ss,23, xsxsx,ssscsc,ss
 Comprador,adad,dads,1221, adad,dad,ada
 Comprador,Tommy,Burgos,232, espol,tom,my
+Comprador,Mateo,Burgos,0987654321, Casa,mateo,mateo

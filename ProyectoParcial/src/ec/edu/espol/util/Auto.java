@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author Mile
  */
-public class Auto extends Vehiculo{
+public class Auto extends Vehiculo implements Busqueda{
     //ATIBUTOS
     private int vidrios;           //Número de Vidrios
     
@@ -29,18 +29,23 @@ public class Auto extends Vehiculo{
         super(tipoVehiculo, anio, recorrido, precio);
     }
     
-public static ArrayList<Vehiculo> leerRegistroAutos(String archivo){
-        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+public static ArrayList<Auto> leerRegistroAutos(String archivo){
+        ArrayList<Auto> autos = new ArrayList<>();
         try(Scanner sc= new Scanner(new File(archivo))){
             while(sc.hasNextLine()){
                 String[] atributos= sc.nextLine().split(",");                
-                //Auto v= new Auto((String)atributos[0],(int)atributos[5],(double)atributos[6],(double)atributos[11]);
-                //vehiculos.add(v);
+                Auto v;
+                v = new Auto(atributos[0],Integer.parseInt(atributos[5]),Integer.parseInt(atributos[6]),Integer.parseInt(atributos[11]));
+                autos.add(v);
             }
         }catch(Exception e){
             System.out.println(e.getMessage());
-        }return vehiculos;
+        }return autos;
     }    
+
+    Auto(String tipo, String placa, String marca, String motor, int año, double recorrido, String color, String combustible, double precio, String transmision, int ventanas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     //GETTERS
     public int getVidrios() {
@@ -52,7 +57,36 @@ public static ArrayList<Vehiculo> leerRegistroAutos(String archivo){
         if (vidrios>=0)
             this.vidrios = vidrios;
     }
-    
+    @Override
+    public  ArrayList<String> Buscar(String Archivo,Vehiculo v1){
+        ArrayList<String> atributos= new ArrayList<>();
+        try(Scanner sc= new Scanner(new File(Archivo))){
+        while(sc.hasNext()){                         
+             String linea= sc.nextLine();             
+             String[] arr= linea.split(",");
+             String tipo=arr[0];
+             String rec=arr[6];
+             String anio=arr[7];
+             String precio=arr[9];
+             //atributos.add(tipo);
+             //atributos.add(rec);                         
+             /*System.out.println(v1.getTipoVehiculo());
+             System.out.println(v1.getTipoVehiculo().equals(tipo));
+             System.out.println(v1.getRecorrido());
+             System.out.println(v1.getRecorrido()==Double.parseDouble(rec));*/
+             while (v1.getTipoVehiculo().equals(tipo)||v1.getRecorrido()==Double.parseDouble(rec)){
+                atributos.add(tipo);
+                atributos.add(rec);
+                atributos.add(anio);
+                atributos.add(precio);
+             }
+         }   
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+     return atributos;
+        
+    }
     //TOSTRING
     @Override
     public String toString() {

@@ -6,10 +6,12 @@
 package ec.edu.espol.util;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  *
@@ -156,9 +158,41 @@ public abstract class Vehiculo {
         {
             System.out.println(v.getMessage());
         }
-    }    
-    
-    
+    } 
+    public  static ArrayList<String> Buscar(String Archivo,ArrayList<String> a){           //[ motocicleta, 500, rojo]
+        ArrayList<String> vehiculos= new ArrayList<>();
+        //String archivo = a.get(0)+".txt";
+        try(Scanner sc= new Scanner(new File(Archivo))){
+        while(sc.hasNext()){                
+             double recInLista=Double.parseDouble(a.get(1));
+             double recFinLista=Double.parseDouble(a.get(2));
+             String linea= sc.nextLine();             
+             String[] arr= linea.split(",");            
+             String tipo=arr[0];
+             String rec=arr[6];
+             double recorrido=Double.parseDouble(rec);
+             if (tipo.equals(a.get(0))&&(recInLista>=recorrido)&&(recFinLista<=recorrido)){
+                 vehiculos.add(linea);
+             }
+             /*String rec=arr[6];
+             String anio=arr[7];
+             String precio=arr[9];
+             //atributos.add(tipo);
+             //atributos.add(rec);                         
+             /*while (v1.getTipoVehiculo().equals(tipo)||v1.getRecorrido()==Double.parseDouble(rec)){
+                atributos.add(tipo);
+                atributos.add(rec);
+                atributos.add(anio);
+                atributos.add(precio);
+             }*/
+         }   
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+     return vehiculos; 
+        
+    }
+
     //TOSTRING
     @Override
     public String toString() {

@@ -20,6 +20,10 @@ public class Motocicleta extends Vehiculo {
         super(tipoVehiculo, placa, marca, modelo, motor, año, recorrido, color, combustible, transmision, precio);
         this.tipo = tipo;
     }
+
+    Motocicleta(String tipo, String placa, String marca, String motor, int año, double recorrido, String color, String combustible, double precio, String transmision) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     //GETTERS
     public String getTipo() {

@@ -3,11 +3,13 @@ package ec.edu.espol.common;
 
 import ec.edu.espol.util.Auto;
 import ec.edu.espol.util.Comprador;
+import ec.edu.espol.util.Registros;
 import ec.edu.espol.util.Vehiculo;
 import ec.edu.espol.util.Vendedor;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -70,7 +72,7 @@ public class ProyectoParcial {
                         System.out.println("Clave: ");
                         String clave = sc.next();
                         Vendedor us1= new Vendedor(nombres, apellidos, ced, correo, org, user, clave);
-                        us1.registrarVendedor(clave);//AGREGAR EL ARCHIVO 
+                        us1.registrarVendedor("Vendedores.txt");//AGREGAR EL ARCHIVO 
                         System.out.println(us1);
                         break;
                     case 2:                                                     //2. Ingreso de un nuevo vehículo
@@ -81,8 +83,7 @@ public class ProyectoParcial {
                         //Validar que las credenciales sean correctas para continuar 
                         //Dedería ir dentro de un método llamado ingresarVehiculo ---> método estático                        
                         System.out.println("Ingrese el tipo de vehiculo que desea registrar: ");
-                        String tipoVehiculo=sc.next();
-                        
+                        String tipoVehiculo=sc.next();                        
                         System.out.println("Ingrese la placa del vehiculo: ");
                         String placa=sc.next();
                         System.out.println("Ingrese la marca del vehículo: ");
@@ -109,11 +110,12 @@ public class ProyectoParcial {
                             int vidrios=sc.nextInt();
                             vidrioN=vidrioN;
                         }
+                        
                         Auto vn=new Auto(tipoVehiculo,placa,marca, modelo, motor, anio, recorrido, color, combustible, transmision, precio,vidrioN);
-                        vn.registrarVehiculo("Vehiculos.txt");                                              
-                        break;
-
-                    
+                        vn.registrarVehiculo("Vehiculos.txt");
+                        ArrayList<Auto> listAut=Auto.leerRegistroAutos("Vehiculos.txt");
+                        ArrayList<Registros> listReg= Registros.leerRegistro("Registros.txt");
+                        break;                    
                     case 3: 
                         System.out.print("Ingrese su usuario: ");
                         String us2=sc.nextLine();
@@ -161,25 +163,32 @@ public class ProyectoParcial {
                         System.out.println("El registro se ha completado exitosamente");
                         break;                
                         case 2:
-                            System.out.println("Ingrese el tipo de vehiculo");
+                           System.out.println("Ingrese el tipo de vehiculo");
                             String tipo=sc.next();
                             System.out.println("Ingrese el intervalo del recorrido ");
                             System.out.println("Inicio: ");
-                            int inicio=sc.nextInt();
+                            String inicio=sc.next();
                             System.out.println("Final");
-                            int fin = sc.nextInt();
+                            String fin = sc.next();
                             System.out.println("Ingrese el intervalo del año: ");
                             System.out.println("Inicio: ");
-                            int iniAnio=sc.nextInt();
+                            String iniAnio=sc.next();
                             System.out.println("Final: ");
-                            int finAnio=sc.nextInt();
+                            String finAnio=sc.next();
                             System.out.println("Ingrese el intervalo del precio: ");
                             System.out.println("Inicio: ");                            
                             double iniPrec=sc.nextDouble();
                             System.out.println("Final: ");
                             double finPrec=sc.nextDouble();
-                            
-                            
+                           //Vehiculo vn=new Auto(tipo,inicio,iniAnio,iniPrec);
+                           ArrayList atrib= new ArrayList();
+                           atrib.add(tipo);
+                           atrib.add(inicio);
+                           atrib.add(fin);
+                           atrib.add(iniAnio);
+                           atrib.add(finAnio);
+                           atrib.add(iniPrec);
+                           System.out.println(Vehiculo.Buscar("Vehiculos.txt", atrib));
                             break;
                         default:
                         break;

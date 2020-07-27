@@ -20,6 +20,10 @@ public class Camioneta extends Vehiculo{
         super(tipoVehiculo, placa, marca, modelo, motor, anio, recorrido, color, combustible, transmision, precio);
         this.vidrios = vidrios;
     }
+
+    Camioneta(String tipo, String placa, String marca, String motor, int año, double recorrido, String color, String combustible, double precio, String transmision, int ventanas) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     //GETTERS
     public int getVidrios() {
