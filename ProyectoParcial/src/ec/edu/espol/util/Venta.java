@@ -86,7 +86,7 @@ public class Venta {
     @Override
     public String toString() {
         if (vendido==true)
-            return " VENTA EXITOSA \n************* \n --- Datos de la Venta --- \nDatos del Vendedor: " + vendedor.getNombres() + " " + vendedor.getApellidos() + ", C.I. " + vendedor.getCedula() + "\nDatos del Compador: " + oferta.getComprador().getNombres() + " " + oferta.getComprador().getApellidos() + ", C.I. " + oferta.getComprador().getCedula() + "\nDatos del Vehículo: " + vehiculo.getTipoVehiculo() + ", Placa " + vehiculo.getPlaca() + ", Año " + vehiculo.getAnio() + "\nMonto de la Venta: $" + oferta.getPrecioOfertado();
+            return " VENTA EXITOSA \n************* \n --- Datos de la Venta --- \nDatos del Vendedor: " + vendedor.getNombres() + " " + vendedor.getApellidos() + ", C.I. " + vendedor.getCedula() + "\nDatos del Vehículo: /nPlaca " + placaVehiculo + "\nMonto de la venta: " + oferta.getPrecioOfertado();
         else
             return "No se ha podido realizar la venta...";
     }
