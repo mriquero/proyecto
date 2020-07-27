@@ -74,7 +74,7 @@ public class Comprador extends Usuario {
     @Override
     public String toString() {
         //Comprador, nombre, apeelido, correo, organiz,usuario,clave
-        return "Comprador"+","+ this.nombres +"," + this.apellidos+","+ this.correo+", "+ this.organizacion+ ","+ this.usuario+","+this.clave;
+        return this.nombres +"," + this.apellidos+"," + cedula + "," + this.correo+", "+ this.organizacion+ ","+ this.usuario+","+this.clave;
     }
     
     

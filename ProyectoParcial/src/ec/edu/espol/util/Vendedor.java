@@ -208,6 +208,6 @@ public class Vendedor extends Usuario {
     @Override
      public String toString()
      {
-         return nombres + "," + apellidos + "," + correo + "," + organizacion + "," + usuario + "," + clave;
+         return nombres + "," + apellidos + "," + cedula + "," + correo + "," + organizacion + "," + usuario + "," + clave;
      }          
 }

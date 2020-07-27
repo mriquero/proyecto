@@ -50,7 +50,11 @@ public class Usuario {
         
       return validar.contains(usuario) && validar.contains(clave);
     }
-   
+    
+    public void imprimirUsuario(){
+        System.out.println("**** DATOS DEL USUARIO ****");
+        System.out.println("Nombres: "+nombres+"\nApellidos: "+apellidos+"\nC.I. "+cedula+"\nCorreo: "+correo+"\nOrdanización: "+organizacion);
+    }
     
 
     public String getNombres() {

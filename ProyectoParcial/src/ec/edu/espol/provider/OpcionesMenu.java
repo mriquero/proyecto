@@ -51,7 +51,24 @@ public class OpcionesMenu {
             System.out.println("3. Aceptar Oferta");
             System.out.print("--> ");
         }
-
+    }
+    public static void menuOfertar(int i , int f){
+        if (i==0){
+        System.out.println("1. Siguiente Vehículo");
+        System.out.println("2. Ofertar");
+        System.out.print("--> ");
+        }
+        else if(i==(f-1)){
+            System.out.println("1. Anterior Vehículo");
+            System.out.println("2. Ofertar");
+            System.out.print("--> ");
+        }
+        else {        
+            System.out.println("1. Anterior Vehículo");
+            System.out.println("2. Siguiente Vehículo");
+            System.out.println("3. Ofertar");
+            System.out.print("--> ");
+        }
     }
     
 }

@@ -1,5 +1,1 @@
-sdd,sd,sd,ds,sd,2016,1000.0,ad,dsd,ds,0,12.333
-Auto,gsa9617,chevrolet,cherry,a4,2012,1500.0,gris,eco,si,0,12.0
-Auto,gffc9617,Chevrolet,Vitara,pd3,2013,1000.0,gris,eco,20c,0,12.0
-Auto,dsa1208,chevrolet,cherry,ba23,2015,2000.0,azul,eco,de23,0,12.0
-Auto,gyt9617,chevrolet,gt,tipo,2018,4500.0,azul,Eco,de32,0,11500.0
+auto,djcndsckjanc,audi,1300K,none,2015,200.5,rojo,diesel,none,4,30000.0

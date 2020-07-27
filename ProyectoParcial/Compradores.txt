@@ -1,4 +1,2 @@
-Comprador,ujs,ss,23, xsxsx,ssscsc,ss
-Comprador,adad,dads,1221, adad,dad,ada
-Comprador,Tommy,Burgos,232, espol,tom,my
-Comprador,Mateo,Burgos,0987654321, Casa,mateo,mateo
+Ana Maria,Vargas Donoso,0988888888,maria@gmail.com, none,amavado,0988888888
+Emma Liz,Ponce Ponce,0987654321,emma@gmail.com, none,emlizpo,17756315ebd47b7110359fc7b168179bf6f2df3646fcc888bc8aa05c78b38ac1

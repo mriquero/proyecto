@@ -1,7 +1,0 @@
-**** DATOS DEL USUARIO ***
-Nombres: Tommy
-Apellidos: Burgos
-C.I. 09876543212
-Correo: tem@es
-Organizacion: Espol
-User: tommy

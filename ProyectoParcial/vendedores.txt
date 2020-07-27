@@ -1,7 +1,2 @@
-**** DATOS DEL USUARIO ***
-Nombres: Tommy
-Apellidos: Burgos
-C.I. 09876543212
-Correo: tem@es
-Organizacion: Espol
-User: tommy
+Milena Desiree,Riquero Herrera,0953062221,milenariquero@gmail.com,none,mriquero,6c366b15b277f04d9e59abbcd36716a8bd6fc0042c08c8844d027e92a31f9ecb
+Pepe Andres,Acosta Vaca,0999999999,pepe@gmail.com,none,pavaca,aa6e64e990a142900c0f1d3b4d11168332a5d55a426741dcd5357a2a5bd06918

@@ -95,24 +95,28 @@ public class Main {
                                 System.out.print("Clave: ");
                                 String clave = sc.next();
                                 String claveEncrip= encriptaHex(to256(clave));
-                                System.out.println(claveEncrip);
+                                //System.out.println(claveEncrip);
                               
-                                Vendedor us1= new Vendedor(nombres, apellidos, ci, correo, org, user, clave);
+                                Vendedor us1= new Vendedor(nombres, apellidos, ci, correo, org, user, claveEncrip);
                                 
                                 us1.registrarVendedor("Vendedores.txt");
                                 System.out.println(" ");
-                                System.out.println(us1);
+                                us1.imprimirUsuario();
                                 break;
                                 
                             case 2:   //Esta opción ingresa un nuevo vehículo
-                                boolean validar;  
-                                do{System.out.print("Ingrese su usuario: ");
-                                String us=sc.next();
-                                System.out.print("Ingrese su contraseña: ");
-                                String cont=sc.next();
-                                String contEncrip= encriptaHex(to256(cont));
-                                System.out.println(contEncrip);
-                                validar= Usuario.validarIngreso("vendedores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
+                                boolean validar;
+                                String us;
+                                String cont;
+                                do{
+                                    System.out.print("Ingrese su usuario: ");
+                                    us=sc.next();
+                                    System.out.print("Ingrese su contraseña: ");
+                                    cont=sc.next();
+                                    String contEncrip= encriptaHex(to256(cont));
+                                    //System.out.println(contEncrip);
+                                    validar= Usuario.validarIngreso("Vendedores.txt",us,contEncrip);
+                                    //System.out.println(validar);
                                 }while (validar==false);
                                     System.out.println("Ingrese el tipo de vehiculo que desea registrar: ");
                                     String tipoVehiculo=sc.next();
@@ -161,20 +165,22 @@ public class Main {
                                             Motocicleta vn3= new Motocicleta(tipoVehiculo,placa,marca,modelo,motor,anio,recorrido,color,combustible,transmision,precio,tipo);
                                             vn3.registrarVehiculo("Vehiculos.txt");
                                             break;
+                                        default:
+                                            break;
                                     }
                                 break;
                             case 3:
                                 boolean validar1;  
-                                String us;
-                                String cont;
+                                String us0;
+                                String cont0;
                                 do{
                                 System.out.print("Ingrese su usuario: ");
-                                us=sc.next();
+                                us0=sc.next();
                                 System.out.print("Ingrese su contraseña: ");
-                                cont=sc.next();
-                                String contEncrip= encriptaHex(to256(cont));
-                                System.out.println(contEncrip);
-                                validar= Usuario.validarIngreso("Vendedores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
+                                cont0=sc.next();
+                                String contEncrip0= encriptaHex(to256(cont0));
+                                //System.out.println(contEncrip0);
+                                validar= Usuario.validarIngreso("Vendedores.txt",us0,contEncrip0); //Aqui se debería validar el usuario y la contraseña
                                 }while (validar==false);
                                 boolean existe=false;
                                 String[] infovehiculo;
@@ -194,14 +200,24 @@ public class Main {
                                     }
                                 }while(existe==false);
                                 
-                                
+                                /*try (Scanner sc1 = new Scanner (new File ("Vehiculos.txt"))){
+                                        while (sc1.hasNextLine()){
+                                            String[] info = sc1.nextLine().split(",");
+                                            if (placaOfertas.equals(info[1])){
+                                                existe=true;
+                                                infovehiculo= info;
+                                            }
+                                        }
+                                    }  catch(Exception e){
+                                         System.out.println(e.getMessage());
+                                }*/
                                 ArrayList<String> presentar = new ArrayList<>();  //Leer archivo ofertas para presentar las ofertas que se desean mostrar
                                 presentar.add("primero ***");
                                 presentar.add("segundo ***");
                                 presentar.add("tercero ***");
                                 int i=0;
                                 int f=presentar.size();
-
+                                int indice=0;
                                 while (i<f){
                                     System.out.println(i);
                                     System.out.println(presentar.get(i));
@@ -214,6 +230,7 @@ public class Main {
                                                 i++;
                                                 break;
                                             case 2:
+                                                indice=i;
                                                 i=f;
                                                 System.out.println("Se ha aceptado una oferta");
                                                 break;
@@ -232,6 +249,7 @@ public class Main {
                                                 i++;
                                                 break;
                                             case 3:
+                                                indice=i;
                                                 i=f;
                                                 System.out.println("Se ha aceptado una oferta");
                                             default:
@@ -246,6 +264,7 @@ public class Main {
                                                 i--;
                                                 break;
                                             case 2:
+                                                indice=i;
                                                 i=f;
                                                 System.out.println("Se ha aceptado una oferta");
                                                 break;
@@ -299,44 +318,65 @@ public class Main {
                                 System.out.print("Clave: ");
                                 String clave = sc.next();
                                 String claveEncrip= encriptaHex(to256(clave));
-                                System.out.println(claveEncrip);
-                              
-                                Comprador us1= new Comprador(nombres, apellidos, ci, correo, org, user, clave);
+                                //System.out.println(claveEncrip);
+                                Comprador us1= new Comprador(nombres, apellidos, ci, correo, org, user, claveEncrip);
                                 us1.registrarComprador("Compradores.txt");
                                 System.out.println(" ");
-                                System.out.println(us1);
+                                us1.imprimirUsuario();
                                 break;
                             case 2:
                                 boolean validar;
                                 String us;
                                 String cont;
                                 do{
-                                System.out.print("Ingrese su usuario: ");
-                                us=sc.next();
-                                System.out.print("Ingrese su contraseña: ");
-                                cont=sc.next();
-                                String contEncrip= encriptaHex(to256(cont));
-                                System.out.println(contEncrip);
-                                validar= Usuario.validarIngreso("Compradores.txt",us,contEncrip); 
+                                    System.out.print("Ingrese su usuario: ");
+                                    us=sc.next();
+                                    System.out.print("Ingrese su contraseña: ");
+                                    cont=sc.next();
+                                    String contEncrip= encriptaHex(to256(cont));
+                                    System.out.println(contEncrip);
+                                    validar= Usuario.validarIngreso("Compradores.txt",us,contEncrip); 
+                                    System.out.println(validar);
                                 }while (validar==false);
-                                
-                                
-                                System.out.println("Ingrese el tipo de vehiculo");
+                                //----------------------------------------------------------------
+                                ArrayList<String> info = new ArrayList<> ();
+                                try{
+                                    BufferedReader buff = new BufferedReader(new FileReader("Compradores.txt"));
+                                    String buffRead;
+                                    while ((buffRead=buff.readLine())!=null){
+                                        String [] linea= buffRead.split(",");
+                                        if (linea[5].equals(us)){
+                                            info.add(linea[0]);
+                                            info.add(linea[1]);
+                                            info.add(linea[2]);
+                                            info.add(linea[3]);
+                                            info.add(linea[4]);
+                                            info.add(linea[5]);
+                                            info.add(linea[6]);
+                                        }
+                                    }
+                                }catch(Exception e){
+                                    System.out.println("File not found");
+                                }
+                                Comprador comprador = new Comprador(info.get(0),info.get(1),info.get(2),info.get(3),info.get(4),info.get(5),info.get(6));
+                                comprador.imprimirUsuario();
+                                //----------------------------------------------------------------
+                                System.out.print("Ingrese el tipo de vehiculo");
                                 String tipo=sc.next();
                                 System.out.println("Ingrese el intervalo del recorrido ");
-                                System.out.println("Inicio: ");
+                                System.out.print("Inicio: ");
                                 String inicio=sc.next();
-                                System.out.println("Final");
+                                System.out.print("Final");
                                 String fin = sc.next();
-                                System.out.println("Ingrese el intervalo del año: ");
-                                System.out.println("Inicio: ");
+                                System.out.println("Ingrese el intervalo del año");
+                                System.out.print("Inicio: ");
                                 String iniAnio=sc.next();
-                                System.out.println("Final: ");
+                                System.out.print("Final: ");
                                 String finAnio=sc.next();
-                                System.out.println("Ingrese el intervalo del precio: ");
-                                System.out.println("Inicio: ");                            
+                                System.out.println("Ingrese el intervalo del precio");
+                                System.out.print("Inicio: ");                            
                                 double iniPrec=sc.nextDouble();
-                                System.out.println("Final: ");
+                                System.out.print("Final: ");
                                 double finPrec=sc.nextDouble();
                                 ArrayList atrib= new ArrayList();
                                 atrib.add(tipo);
@@ -347,29 +387,77 @@ public class Main {
                                 atrib.add(iniPrec);
                                 
                                 ArrayList<Vehiculo> vehiculos = Vehiculo.Buscar("Vehiculos.txt", atrib);
-                                Vehiculo vehiculo = vehiculos.get(0);
-                                System.out.print("Ingrese el precio a ofertar: ");
-                                double precioOfertar= sc.nextDouble();
-                                String[] info;
-                                try (Scanner sc1 = new Scanner (new File ("Compradores.txt"))){
-                                    while (sc1.hasNextLine()){
-                                        String[] inf = sc1.nextLine().split(",");
-                                        if (us.equals(inf[5]))
-                                            info=inf;
+                               
+                                double precioOfertar=0;
+                                int i=0;
+                                int indice=0;
+                                int f=vehiculos.size();
+
+                                while (i<f){
+                                    System.out.println(i);
+                                    System.out.println(vehiculos.get(i));
+                                    OpcionesMenu.menuOfertar(i, f);
+                                    int op = sc.nextInt();
+                                    if (i==0){
+                                        switch(op){
+                                            case 1:
+                                                i++;
+                                                break;
+                                            case 2:
+                                                indice=i;
+                                                i=f;
+                                                System.out.print("Ingrese el precio a ofertar: ");
+                                                precioOfertar= sc.nextDouble();
+                                                break;
+                                            default:
+                                                i=f;
+                                                break;
+                                        }
                                     }
-                                }  
-                                catch(Exception e){
-                                    System.out.println(e.getMessage());
+                                    else if(i<(f-1) && i!=0){
+                                        switch(op){
+                                            case 1:
+                                                i--;
+                                                break;
+                                            case 2:
+                                                i++;
+                                                break;
+                                            case 3:
+                                                indice=i;
+                                                i=f;
+                                                System.out.print("Ingrese el precio a ofertar: ");
+                                                precioOfertar= sc.nextDouble();
+                                            default:
+                                                i=f;
+                                                break;
+                                        }
+                                    }
+                                    else if (i==(f-1)){
+                                        switch(op){
+                                            case 1:
+                                                i--;
+                                                break;
+                                            case 2:
+                                                indice=i;
+                                                i=f;
+                                                System.out.print("Ingrese el precio a ofertar: ");
+                                                precioOfertar= sc.nextDouble();
+                                                break;
+                                            default:
+                                                i=f;
+                                                break;
+                                        }
+                                    }
                                 }
-                                Comprador comprador= new Comprador(info[0],info[1],info[2],info[3],info[4],info[5],info[6]);
-                                Oferta oferta=comprador.ofertar(vehiculo, precioOfertar);
+                                //Crear objeto Oferta
+                                Oferta oferta= new Oferta(comprador, vehiculos.get(indice),precioOfertar);
+                                oferta.registrarOferta("Ofertas.txt");
                                 break;
                             default:
                                 break;                       
                         }
                     }while(subopcion1!=3);
                     break;
-                
                 default:
                     break;
             }
