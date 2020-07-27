@@ -36,7 +36,7 @@ public class Mail {
         props.put("mail.smtp.user", remitente);
         props.put("mail.smtp.clave", clave);   
         
-        /*Session session = Session.getDefaultInstance(props);
+        Session session = Session.getDefaultInstance(props);
         MimeMessage message = new MimeMessage(session);
         
         try {
@@ -51,8 +51,9 @@ public class Mail {
         transport.close();
         }
         catch (MessagingException me){
-            me.printStackTrace(); */
+            me.printStackTrace();
         }
         
      }
+}
 

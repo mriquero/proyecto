@@ -12,8 +12,8 @@ import java.util.Objects;
  */
 public class Venta {
     //ATRIBUTOS
-    private static int iDVenta = 0;      //Variable Autoincrementable con la creación de un nuveo Objeto Venta
-    private boolean vendido;             //Estado de venta del auto, se lo obtiene a partir del método aceptarOferta de la clase Vendedor
+    private static int iDVenta = 0;              //Variable Autoincrementable con la creación de un nuveo Objeto Venta
+    private boolean vendido = false;             //Estado de venta del auto, su estado cambia dentro del método aceptarOferta de la clase Vendedor
     private Vehiculo vehiculo;
     private Vendedor vendedor;
     private Oferta oferta;
@@ -30,6 +30,9 @@ public class Venta {
     }
     
     //GETTERS
+    public int getiDVenta(){                                           //No posee setter ya que una vez que se genera la venta no se podría cambiar su identificador para evitar incongruencias en los datos
+        return iDVenta;
+    }
     public boolean isVendido() {
         return vendido;
     }
@@ -39,7 +42,7 @@ public class Venta {
     public Vendedor getVendedor() {
         return vendedor;
     }
-    public Oferta getComprador() {
+    public Oferta getOferta() {
         return oferta;
     }
     
@@ -69,7 +72,6 @@ public class Venta {
             return true;
         if (this.getClass()!= o.getClass())    
             return false;
-        
         Venta other = (Venta)o;
         return this.iDVenta == other.iDVenta;
     }
@@ -78,11 +80,10 @@ public class Venta {
 
     @Override
     public String toString() {
-        if (vendido == true){
+        if (vendido==true)
             return " VENTA EXITOSA \n************* \n --- Datos de la Venta --- \nDatos del Vendedor: " + vendedor.getNombres() + " " + vendedor.getApellidos() + ", C.I. " + vendedor.getCedula() + "\nDatos del Compador: " + oferta.getComprador().getNombres() + " " + oferta.getComprador().getApellidos() + ", C.I. " + oferta.getComprador().getCedula() + "\nDatos del Vehículo: " + vehiculo.getTipoVehiculo() + ", Placa " + vehiculo.getPlaca() + ", Año " + vehiculo.getAnio() + "\nMonto de la Venta: $" + oferta.getPrecioOfertado();
-        }
         else
-            return "No se pudo realizar la venta";
+            return "No se ha podido realizar la venta...";
     }
     
     

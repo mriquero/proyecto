@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.util;
 
+import ec.edu.espol.provider.Mail;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,9 +20,15 @@ import java.util.Scanner;
  * @author macbookpro
  */
 public class Vendedor extends Usuario {
+<<<<<<< HEAD
     private Vehiculo v;
+=======
+    private ArrayList<Venta> ventas;
+    
+>>>>>>> f7875a50b673bfa1b7abe1138a1326cd65ad89da
     public Vendedor(String nom, String ap, String ci,String corr, String org, String us, String cl) {
         super(nom, ap, ci, corr, org, us, cl);
+        ventas= new ArrayList<> ();
     }
 
     
@@ -81,6 +88,7 @@ public class Vendedor extends Usuario {
         return placas.contains(placa);
         
     }    
+<<<<<<< HEAD
     public Vehiculo ingresaTipo()
     {
         System.out.println("Ingrese el tipo de vehiculo que quisiera ingresar, puede ser auto, camioneta, camión o moto:");
@@ -191,4 +199,17 @@ public class Vendedor extends Usuario {
      {
          return nombres + "," + apellidos + "," + correo + "," + organizacion + "," + usuario + "," + clave;
      }
+=======
+    
+    public Venta aceptarOferta(Oferta oferta){
+        Venta venta= new Venta(oferta.getVehiculo(), this, oferta);
+        venta.setVendido(true);
+        String destinatario = oferta.getComprador().getCorreo();
+        String asunto = "SE HA ACEPTADO SU OFERTA";
+        String cuerpo = venta.toString();
+        Mail.enviarMail(destinatario, asunto, cuerpo);
+        ventas.add(venta);
+        return venta;
+    }
+>>>>>>> f7875a50b673bfa1b7abe1138a1326cd65ad89da
 }

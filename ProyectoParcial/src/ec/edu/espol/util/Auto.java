@@ -29,8 +29,13 @@ public class Auto extends Vehiculo implements Busqueda{
         super(tipoVehiculo, anio, recorrido, precio);
     }
     
+<<<<<<< HEAD
 public static ArrayList<Auto> leerRegistroAutos(String archivo){
         ArrayList<Auto> autos = new ArrayList<>();
+=======
+    public static ArrayList<Vehiculo> leerRegistroAutos(String archivo){
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+>>>>>>> f7875a50b673bfa1b7abe1138a1326cd65ad89da
         try(Scanner sc= new Scanner(new File(archivo))){
             while(sc.hasNextLine()){
                 String[] atributos= sc.nextLine().split(",");                
@@ -57,6 +62,7 @@ public static ArrayList<Auto> leerRegistroAutos(String archivo){
         if (vidrios>=0)
             this.vidrios = vidrios;
     }
+<<<<<<< HEAD
     @Override
     public  ArrayList<String> Buscar(String Archivo,Vehiculo v1){
         ArrayList<String> atributos= new ArrayList<>();
@@ -87,6 +93,16 @@ public static ArrayList<Auto> leerRegistroAutos(String archivo){
      return atributos;
         
     }
+=======
+
+    @Override
+    public void imprimirVehiculo() {
+        System.out.println("**** DATOS DEL VEHICULO ****");
+        System.out.println("Tipo de Vehículo: " + this.tipoVehiculo + "\nPlaca: " + this.placa + "\nMarca: " + this.marca + "\nModelo: " + this.modelo + "\nMotor: " + this.motor + "\nAño: " + this.anio + "\nRecorrido: " + this.recorrido + "\nColor: " + this.color + "\nTipo de Combustible: " + this.combustible + "\nTrnasmisión: " + this.transmision + "\nNúmero de Vidrios: " + this.vidrios +"\nPrecio: " + this.precio);
+    }
+    
+    
+>>>>>>> f7875a50b673bfa1b7abe1138a1326cd65ad89da
     //TOSTRING
     @Override
     public String toString() {

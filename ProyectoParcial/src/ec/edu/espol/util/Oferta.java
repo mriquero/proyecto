@@ -13,6 +13,7 @@ public class Oferta {
     //ATRIBUTOS
     private static int numOferta = 0;
     private Comprador comprador;
+    private Vehiculo vehiculo;
     private String placaVehiculo;
     private double precioOfertado;
     
@@ -21,9 +22,10 @@ public class Oferta {
     public Oferta() {
     }
     public Oferta(Comprador comprador, Vehiculo vehiculo, double precioOfertado) {
-        this.comprador = comprador;
         this.placaVehiculo = vehiculo.getPlaca();
+        this.comprador = comprador;
         this.precioOfertado = precioOfertado;
+        this.vehiculo = vehiculo;
         numOferta = numOferta + 1;
     }
    
@@ -37,7 +39,10 @@ public class Oferta {
     public String getPlacaVehiculo() {
         return placaVehiculo;
     }
-        public double getPrecioOfertado() {
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+    public double getPrecioOfertado() {
         return precioOfertado;
     }
     
@@ -50,11 +55,21 @@ public class Oferta {
         if (placaVehiculo!= null)
             this.placaVehiculo = placaVehiculo;
     }
-        public void setPrecioOfertado(double precioOfertado) {
+    public void setVehiculo(Vehiculo vehiculo) {
+        if (vehiculo!= null)
+            this.vehiculo = vehiculo;
+    }
+    public void setPrecioOfertado(double precioOfertado) {
         if (precioOfertado>=0)
             this.precioOfertado = precioOfertado;
     }
-        
+    
+    //CREAR MÉTODO DE IMPRIMIR OFERTA
+    public void imprimirOferta(int i){
+        System.out.println("Oferta " + i);
+        System.out.println("Correo: " + this.comprador.getCorreo() + "\nPrecio Ofertado: " + this.precioOfertado);
+    }    
+    
     //EQUALS
     @Override
     public boolean equals(Object o) {
@@ -70,10 +85,9 @@ public class Oferta {
     }
     
     //TOSTRING
-
-    @Override
+    @Override                                    
     public String toString() {
-        return "Oferta " + numOferta + "\nCorreo: " + comprador.getCorreo() + "\nPrecio Ofertado: " + precioOfertado;
+        return placaVehiculo + "," + comprador.getCorreo() + "," + precioOfertado + "," + numOferta;
     }
     
 }

@@ -57,7 +57,6 @@ public abstract class Vehiculo {
         this.precio = precio;
     }
     
-    
     //GETTERS
     public String getTipoVehiculo() {
         return tipoVehiculo;
@@ -133,19 +132,7 @@ public abstract class Vehiculo {
             this.precio = precio;
     }
     
-    //EQUALS
-    @Override    
-    public boolean equals(Object o) {
-        if (o==null)        
-            return false;
-        if (this==o)        
-            return true;
-        if (this.getClass()!= o.getClass())    
-            return false;
-        
-        Vehiculo other = (Vehiculo)o;
-        return Objects.equals(this.placa, other.placa);
-    }  
+   
     public void registrarVehiculo(String archivo)
     {
         try(FileWriter fw = new FileWriter(archivo,true);
@@ -158,6 +145,7 @@ public abstract class Vehiculo {
         {
             System.out.println(v.getMessage());
         }
+<<<<<<< HEAD
     } 
     public  static ArrayList<String> Buscar(String Archivo,ArrayList<String> a){           //[ motocicleta, 500, rojo]
         ArrayList<String> vehiculos= new ArrayList<>();
@@ -193,9 +181,30 @@ public abstract class Vehiculo {
         
     }
 
+=======
+    }    
+    
+    public void imprimirVehiculo(){
+        System.out.println("**** DATOS DEL VEHICULO ****");
+        System.out.println("Tipo de Vehículo: " + this.tipoVehiculo + "\nPlaca: " + this.placa + "\nMarca: " + this.marca + "\nModelo: " + this.modelo + "\nMotor: " + this.motor + "\nAño: " + this.anio + "\nRecorrido: " + this.recorrido + "\nColor: " + this.color + "\nTipo de Combustible: " + this.combustible + "\nTrnasmisión: " + this.transmision + "\nPrecio: " + this.precio);
+    }
+    //EQUALS
+    @Override    
+    public boolean equals(Object o) {
+        if (o==null)        
+            return false;
+        if (this==o)        
+            return true;
+        if (this.getClass()!= o.getClass())    
+            return false;
+        
+        Vehiculo other = (Vehiculo)o;
+        return Objects.equals(this.placa, other.placa);
+    }  
+>>>>>>> f7875a50b673bfa1b7abe1138a1326cd65ad89da
     //TOSTRING
     @Override
     public String toString() {
-        return this.tipoVehiculo+ ","+ this.color+ ","+ this.combustible+","+ this.marca+","+ this.recorrido+","+ this.modelo+","+ this.motor+","+this.anio+","+ this.placa+ ","+ this.precio+","+ this.transmision;
+        return this.tipoVehiculo + "," + this.placa + "," + this.marca + "," + this.modelo + "," + this.motor + "," + this.anio + "," + this.recorrido + "," + this.color + "," + this.combustible + "," + this.transmision + "," + this.precio;
     }    
 }
