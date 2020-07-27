@@ -1,0 +1,8 @@
+**** DATOS DEL USUARIO ***
+Nombres: bla bla
+Apellidos: bla blla
+C.I. 0953062221
+Correo: milena@gmail.com
+Organizacion: None
+User: mriquero
+bla bla,bla bla,099999999,milena@gmail.com,none,mriquero,1234567890

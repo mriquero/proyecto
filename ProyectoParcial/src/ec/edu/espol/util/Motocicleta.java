@@ -31,9 +31,15 @@ public class Motocicleta extends Vehiculo {
         this.tipo = tipo;
     }
     
+    @Override
+    public void imprimirVehiculo() {
+        System.out.println("**** DATOS DEL VEHICULO ****");
+        System.out.println("Tipo de Vehículo: " + this.tipoVehiculo + "\nPlaca: " + this.placa + "\nMarca: " + this.marca + "\nModelo: " + this.modelo + "\nMotor: " + this.motor + "\nAño: " + this.anio + "\nRecorrido: " + this.recorrido + "\nColor: " + this.color + "\nTipo de Combustible: " + this.combustible + "\nTrnasmisión: " + this.transmision + "\nTipo de Motocicleta: " + this.tipo +"\nPrecio: " + this.precio);
+    }
+    
     //TOSTRING
     @Override
     public String toString() {
-        return "--- INFORMACIÓN DEL VEHÍCULO ---" + "\nTipo de Vehículo: " + tipoVehiculo + "\nPlaca: " + placa + "\nMarca: " + marca + "\nModelo: " +  modelo + "\nTipo de motor: " + motor + "\nAño: " + anio + "\nRecorrido: " + recorrido + " Km \nColor: " + color + "\nTipo combustible: " + combustible + "\nTransmision: " + transmision + "\nTipo de motocicleta: " + tipo + "\nPrecio: " + precio;
+        return  tipoVehiculo + "," + placa + "," + marca + "," + modelo + "," + motor + "," + anio + "," + recorrido + "," + color + "," + combustible + "," + transmision + "," + tipo + "," + precio ;
     }
 }

@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.util;
 
+import ec.edu.espol.provider.Mail;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,9 +20,11 @@ import java.util.Scanner;
  * @author macbookpro
  */
 public class Vendedor extends Usuario {
- 
+    private ArrayList<Venta> ventas;
+    
     public Vendedor(String nom, String ap, String ci,String corr, String org, String us, String cl) {
         super(nom, ap, ci, corr, org, us, cl);
+        ventas= new ArrayList<> ();
     }
 
     
@@ -58,8 +61,16 @@ public class Vendedor extends Usuario {
         {
             System.out.println(v.getMessage());
         }
+    }    
+    
+    public Venta aceptarOferta(Oferta oferta){
+        Venta venta= new Venta(oferta.getVehiculo(), this, oferta);
+        venta.setVendido(true);
+        String destinatario = oferta.getComprador().getCorreo();
+        String asunto = "SE HA ACEPTADO SU OFERTA";
+        String cuerpo = venta.toString();
+        Mail.enviarMail(destinatario, asunto, cuerpo);
+        ventas.add(venta);
+        return venta;
     }
-    
-   
-    
 }
