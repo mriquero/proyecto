@@ -114,15 +114,15 @@ public class Main {
                                     validar= Usuario.validarIngreso("Vendedores.txt",us,contEncrip);
                                     //System.out.println(validar);
                                 }while (validar==false);
-                                    System.out.println("Ingrese el tipo de vehiculo que desea registrar: ");
+                                    System.out.print("Ingrese el tipo de vehiculo que desea registrar: ");
                                     String tipoVehiculo=sc.next();
                                     System.out.print("Ingrese la placa del vehiculo: ");
                                     String placa=sc.next();
                                     System.out.print("Ingrese la marca del vehículo: ");
                                     String marca= sc.next();
-                                    System.out.println("Ingrese el modelo del vehiculo: ");
+                                    System.out.print("Ingrese el modelo del vehiculo: ");
                                     String modelo= sc.next();
-                                    System.out.println("Ingrese el tipo de motor: ");
+                                    System.out.print("Ingrese el tipo de motor: ");
                                     String motor=sc.next();
                                     System.out.print("Ingrese el año: ");
                                     int anio=sc.nextInt();

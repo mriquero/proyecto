@@ -1,1 +1,2 @@
 auto,djcndsckjanc,audi,1300K,none,2015,200.5,rojo,diesel,none,4,30000.0
+motocicleta,AAC-0123,Toyota,tfz 450,none,2018,500.0,negro,diesel,none,mototcross,20000.0
