@@ -165,13 +165,16 @@ public class Main {
                                 break;
                             case 3:
                                 boolean validar1;  
-                                do{System.out.print("Ingrese su usuario: ");
-                                String us=sc.next();
+                                String us;
+                                String cont;
+                                do{
+                                System.out.print("Ingrese su usuario: ");
+                                us=sc.next();
                                 System.out.print("Ingrese su contraseña: ");
-                                String cont=sc.next();
+                                cont=sc.next();
                                 String contEncrip= encriptaHex(to256(cont));
                                 System.out.println(contEncrip);
-                                validar= Usuario.validarIngreso("vendedores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
+                                validar= Usuario.validarIngreso("Vendedores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
                                 }while (validar==false);
                                 boolean existe=false;
                                 String[] infovehiculo;
@@ -305,22 +308,60 @@ public class Main {
                                 break;
                             case 2:
                                 boolean validar;
-                                Comprador comprador;
+                                String us;
+                                String cont;
                                 do{
                                 System.out.print("Ingrese su usuario: ");
-                                String us=sc.next();
+                                us=sc.next();
                                 System.out.print("Ingrese su contraseña: ");
-                                String cont=sc.next();
+                                cont=sc.next();
                                 String contEncrip= encriptaHex(to256(cont));
                                 System.out.println(contEncrip);
-                                validar= Usuario.validarIngreso("Compradores.txt",us,contEncrip); //Aqui se debería validar el usuario y la contraseña
+                                validar= Usuario.validarIngreso("Compradores.txt",us,contEncrip); 
                                 }while (validar==false);
                                 
-                                ArrayList<Vehiculo> vehiculos = Vehiculo.buscar("Vehiculos.txt", parametros);
+                                
+                                System.out.println("Ingrese el tipo de vehiculo");
+                                String tipo=sc.next();
+                                System.out.println("Ingrese el intervalo del recorrido ");
+                                System.out.println("Inicio: ");
+                                String inicio=sc.next();
+                                System.out.println("Final");
+                                String fin = sc.next();
+                                System.out.println("Ingrese el intervalo del año: ");
+                                System.out.println("Inicio: ");
+                                String iniAnio=sc.next();
+                                System.out.println("Final: ");
+                                String finAnio=sc.next();
+                                System.out.println("Ingrese el intervalo del precio: ");
+                                System.out.println("Inicio: ");                            
+                                double iniPrec=sc.nextDouble();
+                                System.out.println("Final: ");
+                                double finPrec=sc.nextDouble();
+                                ArrayList atrib= new ArrayList();
+                                atrib.add(tipo);
+                                atrib.add(inicio);
+                                atrib.add(fin);
+                                atrib.add(iniAnio);
+                                atrib.add(finAnio);
+                                atrib.add(iniPrec);
+                                
+                                ArrayList<Vehiculo> vehiculos = Vehiculo.Buscar("Vehiculos.txt", atrib);
                                 Vehiculo vehiculo = vehiculos.get(0);
                                 System.out.print("Ingrese el precio a ofertar: ");
                                 double precioOfertar= sc.nextDouble();
-                                
+                                String[] info;
+                                try (Scanner sc1 = new Scanner (new File ("Compradores.txt"))){
+                                    while (sc1.hasNextLine()){
+                                        String[] inf = sc1.nextLine().split(",");
+                                        if (us.equals(inf[5]))
+                                            info=inf;
+                                    }
+                                }  
+                                catch(Exception e){
+                                    System.out.println(e.getMessage());
+                                }
+                                Comprador comprador= new Comprador(info[0],info[1],info[2],info[3],info[4],info[5],info[6]);
                                 Oferta oferta=comprador.ofertar(vehiculo, precioOfertar);
                                 break;
                             default:

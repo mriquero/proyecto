@@ -1,8 +1,7 @@
 **** DATOS DEL USUARIO ***
-Nombres: bla bla
-Apellidos: bla blla
-C.I. 0953062221
-Correo: milena@gmail.com
-Organizacion: None
-User: mriquero
-bla bla,bla bla,099999999,milena@gmail.com,none,mriquero,1234567890
+Nombres: Tommy
+Apellidos: Burgos
+C.I. 09876543212
+Correo: tem@es
+Organizacion: Espol
+User: tommy

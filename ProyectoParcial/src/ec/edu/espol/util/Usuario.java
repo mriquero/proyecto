@@ -28,7 +28,7 @@ public class Usuario {
         usuario = us;
         clave = cl;
     }
-    public static boolean validarClave(String archivo,String usuario,String clave)
+    public static boolean validarIngreso(String archivo,String usuario,String clave)
     {
        ArrayList<String> validar = new ArrayList<>();
         try(Scanner sc = new Scanner(new File(archivo)))
