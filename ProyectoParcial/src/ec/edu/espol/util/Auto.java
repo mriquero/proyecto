@@ -13,21 +13,19 @@ import java.util.Scanner;
  *
  * @author Mile
  */
-public class Auto extends Vehiculo implements Busqueda{
+public class Auto extends Vehiculo{
     //ATIBUTOS
-    private int vidrios;           //Número de Vidrios
-    
-    //CONSTRUCTORES
+        private int vidrios;
+
     public Auto() {
+        super();
     }
+
     public Auto(String tipoVehiculo, String placa, String marca, String modelo, String motor, int anio, double recorrido, String color, String combustible, String transmision, double precio, int vidrios) {
         super(tipoVehiculo, placa, marca, modelo, motor, anio, recorrido, color, combustible, transmision, precio);
         this.vidrios = vidrios;
     }
 
-    public Auto(String tipoVehiculo, int anio, double recorrido, double precio) {
-        super(tipoVehiculo, anio, recorrido, precio);
-    }
     
 
 
@@ -64,35 +62,7 @@ public static ArrayList<Vehiculo> leerRegistroAutos(String archivo){
             this.vidrios = vidrios;
     }
 
-    public  ArrayList<String> Buscar(String Archivo,Vehiculo v1){
-        ArrayList<String> atributos= new ArrayList<>();
-        try(Scanner sc= new Scanner(new File(Archivo))){
-        while(sc.hasNext()){                         
-             String linea= sc.nextLine();             
-             String[] arr= linea.split(",");
-             String tipo=arr[0];
-             String rec=arr[6];
-             String anio=arr[7];
-             String precio=arr[9];
-             //atributos.add(tipo);
-             //atributos.add(rec);                         
-             /*System.out.println(v1.getTipoVehiculo());
-             System.out.println(v1.getTipoVehiculo().equals(tipo));
-             System.out.println(v1.getRecorrido());
-             System.out.println(v1.getRecorrido()==Double.parseDouble(rec));*/
-             while (v1.getTipoVehiculo().equals(tipo)||v1.getRecorrido()==Double.parseDouble(rec)){
-                atributos.add(tipo);
-                atributos.add(rec);
-                atributos.add(anio);
-                atributos.add(precio);
-             }
-         }   
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-     return atributos;
-        
-    }
+
 
     public void imprimirVehiculo() {
         System.out.println("**** DATOS DEL VEHICULO ****");
@@ -102,5 +72,19 @@ public static ArrayList<Vehiculo> leerRegistroAutos(String archivo){
     public String toString() {
         return  tipoVehiculo + "," + placa + "," + marca + "," + modelo + "," + motor + "," + anio + "," + recorrido + "," + color + "," + combustible + "," + transmision + "," + vidrios + "," + precio ;
     }
-    
+        // Implementación de los métodos abstractos de Vehiculo
+    @Override
+    public boolean esTipoVehiculo(String tipo) {
+        return tipo.equals(tipoVehiculo);
+    }
+
+    @Override
+    public boolean esRecorridoValido(double recorrido) {
+        // Agregar aquí la lógica específica de validación para los autos
+        // Puedes usar el atributo vidrios si es necesario
+        // Por ejemplo:
+        // return vidrios >= 0 && recorrido >= 0;
+        return recorrido >= 0;
+    }
+
 }
