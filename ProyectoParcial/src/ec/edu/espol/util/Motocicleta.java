@@ -47,6 +47,7 @@ public class Motocicleta extends Vehiculo {
     //TOSTRING
     @Override
     public String toString() {
-        return  tipoVehiculo + "," + placa + "," + marca + "," + modelo + "," + motor + "," + anio + "," + recorrido + "," + color + "," + combustible + "," + transmision + "," + tipo + "," + precio ;
+    return super.toString() + "," + tipo;
     }
+
 }
