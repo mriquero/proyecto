@@ -17,7 +17,7 @@ import java.util.Scanner;
  *
  * @author macbookpro
  */
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Busqueda{
     //ATRIBUTOS
     protected String tipoVehiculo; 
     protected String placa;
@@ -180,6 +180,7 @@ public abstract class Vehiculo {
      return vehiculos;
     }
 
+    
 
 
     public void imprimirVehiculo() {
