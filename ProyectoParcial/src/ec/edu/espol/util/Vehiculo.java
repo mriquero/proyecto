@@ -180,6 +180,13 @@ public abstract class Vehiculo {
      return vehiculos;
     }
 
+
+
+    public void imprimirVehiculo() {
+          System.out.println("**** DATOS DEL VEHICULO ****");
+           System.out.println("Tipo de Vehículo: " + this.tipoVehiculo + "\nPlaca: " + this.placa + "\nMarca: " + this.marca + "\nModelo: " + this.modelo + "\nMotor: " + this.motor + "\nAño: " + this.anio + "\nRecorrido: " + this.recorrido + "\nColor: " + this.color + "\nTipo de Combustible: " + this.combustible + "\nTrnasmisión: " + this.transmision + "\nPrecio: " + this.precio);
+    }
+
     //TOSTRING
     @Override
     public String toString() {
