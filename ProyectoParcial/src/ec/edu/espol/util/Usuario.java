@@ -50,7 +50,33 @@ public class Usuario {
         
       return validar.contains(usuario) && validar.contains(clave);
     }
-    
+    public boolean validarRegistro(String archivo) throws FileNotFoundException {
+        ArrayList<String> atributos = new ArrayList<>();
+        try(Scanner sc = new Scanner(new File(archivo))) {
+            while(sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                String arr[] = linea.split(",");
+                String correoRe = arr[3];
+                String usuarioRe = arr[4];
+                atributos.add(correoRe);
+                atributos.add(usuarioRe);
+            }
+        }
+        return !atributos.contains(this.usuario) && !atributos.contains(this.correo);
+    }
+    public void registrarUsuario(String archivo) {
+        try(FileWriter fw = new FileWriter(archivo,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter addTxt = new PrintWriter(bw)) {
+            addTxt.println(this);
+        } catch (Exception v) {
+            System.out.println(v.getMessage());
+        }
+    }
+
+}
+
+
     public void imprimirUsuario(){
         System.out.println("**** DATOS DEL USUARIO ****");
         System.out.println("Nombres: "+nombres+"\nApellidos: "+apellidos+"\nC.I. "+cedula+"\nCorreo: "+correo+"\nOrdanización: "+organizacion);

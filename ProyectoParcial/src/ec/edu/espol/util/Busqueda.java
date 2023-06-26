@@ -13,4 +13,8 @@ import java.util.ArrayList;
  */
 public interface Busqueda {
     public  ArrayList<String> Buscar(String Archivo,Vehiculo v1);
+    public abstract boolean esTipoVehiculo(String tipo);
+    public abstract boolean esRecorridoValido(double recorrido);
+  
+
 }

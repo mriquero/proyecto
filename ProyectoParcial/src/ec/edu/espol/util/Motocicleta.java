@@ -16,10 +16,11 @@ public class Motocicleta extends Vehiculo {
     //CONSTRUCTORES
     public Motocicleta() {
     }
-    public Motocicleta(String tipoVehiculo, String placa, String marca, String modelo, String motor, int año, double recorrido, String color, String combustible, String transmision, double precio, String tipo) {
-        super(tipoVehiculo, placa, marca, modelo, motor, año, recorrido, color, combustible, transmision, precio);
-        this.tipo = tipo;
+   public Motocicleta(String tipoVehiculo, String placa, String marca, String modelo, String motor, int anio, double recorrido, String color, String combustible, String transmision, double precio, String tipo) {
+    super(tipoVehiculo, placa, marca, modelo, motor, anio, recorrido, color, combustible, transmision, precio);
+    this.tipo = tipo;
     }
+
 
     Motocicleta(String tipo, String placa, String marca, String motor, int año, double recorrido, String color, String combustible, double precio, String transmision) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -35,14 +36,18 @@ public class Motocicleta extends Vehiculo {
         this.tipo = tipo;
     }
 
+    @Override
     public void imprimirVehiculo() {
-        System.out.println("**** DATOS DEL VEHICULO ****");
-        System.out.println("Tipo de Vehículo: " + this.tipoVehiculo + "\nPlaca: " + this.placa + "\nMarca: " + this.marca + "\nModelo: " + this.modelo + "\nMotor: " + this.motor + "\nAño: " + this.anio + "\nRecorrido: " + this.recorrido + "\nColor: " + this.color + "\nTipo de Combustible: " + this.combustible + "\nTrnasmisión: " + this.transmision + "\nTipo de Motocicleta: " + this.tipo +"\nPrecio: " + this.precio);
+    super.imprimirVehiculo(); // Llamar al método de la clase base para mostrar los detalles generales del vehículo
+    System.out.println("Tipo de Motocicleta: " + this.tipo); // Mostrar solo el detalle específico de la motocicleta
     }
+
+
     
     //TOSTRING
     @Override
     public String toString() {
-        return  tipoVehiculo + "," + placa + "," + marca + "," + modelo + "," + motor + "," + anio + "," + recorrido + "," + color + "," + combustible + "," + transmision + "," + tipo + "," + precio ;
+    return super.toString() + "," + tipo;
     }
+
 }

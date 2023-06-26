@@ -72,6 +72,35 @@ public class Comprador extends Usuario {
     }
 
     @Override
+    public boolean validarRegistro(String archivo) throws FileNotFoundException {
+        ArrayList<String> atributos = new ArrayList<>();
+        try(Scanner sc = new Scanner(new File(archivo))) {
+            while(sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                String arr[] = linea.split(",");
+                String correoRe = arr[3];
+                String usuarioRe = arr[4];
+                atributos.add(correoRe);
+                atributos.add(usuarioRe);
+            }
+        }
+        return true; // Permitir múltiples registros de compradores con el mismo correo o usuario
+    }
+
+    @Override
+    public void registrarUsuario(String archivo) {
+        try(FileWriter fw = new FileWriter(archivo,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter addTxt = new PrintWriter(bw)) {
+            addTxt.println(this);
+        } catch (Exception v) {
+            System.out.println(v.getMessage());
+        }
+    }
+
+}
+
+    @Override
     public String toString() {
         //Comprador, nombre, apeelido, correo, organiz,usuario,clave
         return this.nombres +"," + this.apellidos+"," + cedula + "," + this.correo+", "+ this.organizacion+ ","+ this.usuario+","+this.clave;
